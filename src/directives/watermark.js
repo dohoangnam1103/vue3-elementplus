@@ -3,7 +3,6 @@
  * { text: 'vue-admin-box', font: '16px Microsoft JhengHei', textColor: '#000' }
  */
 function addWaterMark(str, parentNode, font, textColor) {
-    // 水印文字，父元素，字体，文字颜色
     var can = document.createElement('canvas');
     parentNode.appendChild(can);
     can.width = 200;
@@ -15,7 +14,7 @@ function addWaterMark(str, parentNode, font, textColor) {
     cans.fillStyle = textColor || 'rgba(180, 180, 180, 0.3)';
     cans.textAlign = 'left';
     cans.textBaseline = 'middle';
-    cans.fillText(str || 'vue3-admin-plus', can.width / 10, can.height / 2);
+    cans.fillText(str || 'SL - Admin', can.width / 10, can.height / 2);
     parentNode.style.backgroundImage = 'url(' + can.toDataURL('image/png') + ')';
 }
 export default {

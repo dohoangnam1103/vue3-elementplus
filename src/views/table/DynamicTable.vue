@@ -64,7 +64,7 @@ export default defineComponent({
       },
       name: {
         prop: 'name',
-        title: '姓名',
+        title: '姓name',
         show: true
       },
       address: {

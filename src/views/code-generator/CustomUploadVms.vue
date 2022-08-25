@@ -1,19 +1,19 @@
 <template>
   <div id="CustomUploadVms">
-    <div class="mt-4">自定义模板上传(确保已选择完数据源字段)</div>
+    <div class="mt-4">Custom template upload (make sure the data source field is selected)</div>
 
     <div class="mt-3 mb-1 rowSS">
-      <div>生成前端模版(多个模板一起上传,支持拖拽)</div>
-      <el-button text type="danger" @click="downloadTmpFront">点击下载模版</el-button>
+      <div>Generate front-end templates (multiple templates are uploaded together, support drag and drop)</div>
+      <el-button text type="danger" @click="downloadTmpFront">Click to download the template</el-button>
     </div>
     <MulUploadComp ref="refMulUploadComp" @uploadTheVmsTemp="uploadFrontTemp" />
     <div class="mt-3 mb-1 rowSS">
-      <div>生成后端模版</div>
-      <el-button text type="danger" @click="downloadTmpBack">点击下载模版</el-button>
+      <div>Generate backend template</div>
+      <el-button text type="danger" @click="downloadTmpBack">Click to download the template</el-button>
     </div>
     <MulUploadComp ref="refMulUploadComp" @uploadTheVmsTemp="uploadBackTemp" />
     <div class="mt-3 mb-1">
-      自定义生成模版（只提供数据源能力，导入的模版是什么则返回什么， 返回后会对模版里的插槽字段进行填充）
+      Customize the generated template (only provide data source capabilities, what is the imported template, what will be returned, and the slot field in the template will be filled after returning)）
     </div>
     <MulUploadComp ref="refMulUploadComp" @uploadTheVmsTemp="uploadFrontAndBackTemp" />
   </div>
@@ -28,7 +28,7 @@ const uploadFrontTemp = async (uploadFileList) => {
   uploadFileList.forEach((fItem) => {
     formData.append('file', fItem)
   })
-  //获取parent中的json数据
+  //Obtainparent中的jsondata
   let jsonData = await proxy.$parent.generatorSubData()
   formData.append('jsonData', JSON.stringify(jsonData))
   axiosReq({
@@ -51,7 +51,7 @@ const uploadFrontTemp = async (uploadFileList) => {
 /**
  *下载前端模版
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/26 18:33
  */
 const downloadTmpFront = () => {
@@ -64,7 +64,7 @@ const downloadTmpFront = () => {
 /**
  *下载后端模版
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/26 18:33
  */
 const downloadTmpBack = () => {
@@ -80,7 +80,7 @@ const uploadBackTemp = async (uploadFileList) => {
   uploadFileList.forEach((fItem) => {
     formData.append('file', fItem)
   })
-  //获取parent中的json数据
+  //Obtainparent中的jsondata
   let jsonData = await proxy.$parent.generatorSubData()
   formData.append('jsonData', JSON.stringify(jsonData))
   axiosReq({
@@ -104,7 +104,7 @@ const uploadFrontAndBackTemp = async (uploadFileList) => {
   uploadFileList.forEach((fItem) => {
     formData.append('file', fItem)
   })
-  //获取parent中的json数据
+  //Obtainparent中的jsondata
   let jsonData = await proxy.$parent.generatorSubData()
   formData.append('jsonData', JSON.stringify(jsonData))
   axiosReq({

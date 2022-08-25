@@ -1,7 +1,7 @@
 <template>
   <div class="scroll-y">
-    <div>mock 使用示例(dev环境时使用)</div>
-    <el-button type="primary" @click="listReq">点击发送mock请求</el-button>
+    <div>mock usage example (used in dev environment)</div>
+    <el-button type="primary" @click="listReq">Click to send mock request</el-button>
   </div>
 </template>
 

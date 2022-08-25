@@ -64,7 +64,7 @@ const cancelWatch = () => {
 
 const routerDemoF = () => {
   //推荐路由跳转根据router的name,这样在你修改路径时，只要不修改name，就没有影响。
-  //推荐传递的是query参数，好处是刷新时可以回显，传入的obj对象会反序列化。
+  //推荐传递的是query参数，好处是refresh时可以回显，传入的obj对象会反序列化。
   useVueRouter().routerPush('routerDemoF', { name: 'routerDemoF' })
 }
 </script>

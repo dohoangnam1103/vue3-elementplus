@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-// 获取store和router
+// Obtainstore和router
 
 const props = defineProps({
   name: {
@@ -30,9 +30,9 @@ onMounted(() => {
 let helloFunc = () => {
   console.log('helloFunc')
 }
-// 导出给父元素使用
+// export给父元素使用
 defineExpose({ helloFunc })
-// 导出属性到页面中使用
+// export属性到页面中使用
 let { levelList } = toRefs(state)
 </script>
 

@@ -9,7 +9,7 @@
           <span class="svg-container">
             <svg-icon icon-class="user" />
           </span>
-          <el-input v-model="formInline.username" placeholder="用户名(admin)" />
+          <el-input v-model="formInline.username" placeholder="用户name(admin)" />
           <!--占位-->
           <div class="show-pwd" />
         </div>
@@ -106,7 +106,7 @@ let loginReq = () => {
   userStore
     .login(formInline)
     .then(() => {
-      ElMessage({ message: '登录成功', type: 'success' })
+      ElMessage({ message: 'login successful', type: 'success' })
       router.push({ path: state.redirect || '/', query: state.otherQuery })
     })
     .catch((res) => {
@@ -165,7 +165,7 @@ $light_gray: #eee;
   width: 30px;
 }
 
-//错误提示信息
+//错误提示information
 .tip-message {
   color: #e4393c;
   height: 30px;
@@ -188,7 +188,7 @@ $light_gray: #eee;
 </style>
 
 <style lang="scss">
-//css 样式重置 增加个前缀避免全局污染
+//css 样式重置 Increase个前缀避免全局污染
 .login-container {
   .el-input__wrapper {
     background-color: transparent;

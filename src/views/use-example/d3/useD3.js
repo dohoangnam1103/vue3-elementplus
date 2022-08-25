@@ -36,13 +36,13 @@ export default function() {
     const { links, nodes } = opt.data
     const types = Array.from(new Set(links.map((d) => d.type)))
     // let data = { nodes: Array.from(new Set(links.flatMap((l) => [l.source, l.target])), (id) => ({ id })), links }
-    let color = d3.scaleOrdinal(types, d3.schemeCategory10) // 根据类型生成内置颜色
+    let color = d3.scaleOrdinal(types, d3.schemeCategory10) // 根据type生成内置颜色
     let height = opt.height || 600 // svg宽
     let width = opt.width || 600 // svg高
     // const nodeColor = 'rgb(19,19,19)' // 节点颜色
     const lineColor = 'rgb(148,148,148)' // 边线颜色
     const hoverColor = 'rgb(110,165,255)' // hover颜色
-    const showTextLength = 5 // 超出5个字后截取
+    const showTextLength = 5 // 超出5个Character后截取
 
 
     // 生成力向图配置
@@ -143,7 +143,7 @@ export default function() {
         })
       })
 
-    // 节点追加圆形旁边文字
+    // 节点追加圆形旁边文Character
     node
       .append('text')
       .attr('x', 14)

@@ -1,6 +1,6 @@
 <template>
   <div class="errorLogContainer">
-    <!--操作-->
+    <!--operate-->
     <div class="mr-3 rowSS">
       <el-button type="primary" @click="errorLogProd">错误日志测试</el-button>
       <el-button type="primary" @click="multiDelBtnClick">
@@ -8,9 +8,9 @@
         <el-icon style="vertical-align: middle">
           <Delete />
         </el-icon>
-        <span style="vertical-align: middle">删除</span>
+        <span style="vertical-align: middle">delete</span>
       </el-button>
-      <!--条件搜索-->
+      <!--条件search-->
       <el-form ref="refsearchForm" :inline="true" class="demo-searchForm ml-2">
         <el-form-item label-width="0px" label="" prop="errorLog" label-position="left">
           <el-input v-model="searchForm.errorLog" class="w-150px" placeholder="错误日志" />
@@ -26,16 +26,16 @@
             value-format="YYYY-MM-DD HH:mm:ss"
             class="w-250px"
             range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            start-placeholder="start date"
+            end-placeholder="end date"
             @change="dateTimePacking"
           />
         </el-form-item>
       </el-form>
-      <!--查询按钮-->
-      <el-button @click="searchBtnClick">查询</el-button>
+      <!--Search按钮-->
+      <el-button @click="searchBtnClick">Search</el-button>
     </div>
-    <!--表格和分页-->
+    <!--格和分页-->
     <el-table
       id="resetElementDialog"
       ref="refuserTable"
@@ -55,12 +55,12 @@
       </el-table-column>
       <el-table-column align="center" prop="pageUrl" label="页面路径" min-width="180" />
       <el-table-column align="center" prop="version" label="版本号" width="60" />
-      <el-table-column align="center" prop="browserType" label="浏览器类型" min-width="180" />
-      <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
-      <!--点击操作-->
-      <el-table-column fixed="right" align="center" label="操作" width="80">
+      <el-table-column align="center" prop="browserType" label="浏览器type" min-width="180" />
+      <el-table-column align="center" prop="createTime" label="creation time" width="140" />
+      <!--clickoperate-->
+      <el-table-column fixed="right" align="center" label="operate" width="80">
         <template #default="{ row }">
-          <el-button text size="small" @click="tableDelClick(row)">删除</el-button>
+          <el-button text size="small" @click="tableDelClick(row)">delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -76,7 +76,7 @@
         @current-change="handleCurrentChange"
       />
     </div>
-    <!--详情-->
+    <!--Details-->
     <el-dialog
       v-if="detailDialog"
       v-model="detailDialog"
@@ -85,18 +85,18 @@
       :close-on-click-modal="false"
     >
       <div class="detail-container rowBC elODialogModalBodyH60vh">
-        <div class="detail-container-item">DBC文件名：{{ detailData.username }}</div>
+        <div class="detail-container-item">DBC文件name：{{ detailData.username }}</div>
       </div>
       <div class="detail-container rowBC elODialogModalBodyH60vh">
-        <div v-if="detailData.status === 1" class="detail-container-item" style="color: green">状态： 启用</div>
-        <div v-else class="detail-container-item">状态： 停用</div>
+        <div v-if="detailData.status === 1" class="detail-container-item" style="color: green">state： 启用</div>
+        <div v-else class="detail-container-item">state： 停用</div>
       </div>
       <div class="detail-container rowBC elODialogModalBodyH60vh">
         <div class="detail-container-item">说明：{{ detailData.remark }}</div>
       </div>
       <template #footer>
         <span class="dialog-footer">
-          <el-button type="primary" @click="detailDialog = false">确 定</el-button>
+          <el-button type="primary" @click="detailDialog = false">Ok</el-button>
         </span>
       </template>
     </el-dialog>
@@ -110,8 +110,8 @@ import { Delete } from '@element-plus/icons-vue'
 import settings from '@/settings'
 import bus from '@/utils/bus'
 /*
- * 一般根据页面层次来排序 如此页面 表格查询和筛选->table的操作
- * 每个模块按：响应数据定义->公用方法->请求方法->页面按钮操作方法 进行排序
+ * 一般根据页面层次来sort 如此页面 格Search和筛选->table的operate
+ * 每个模块按：响应data定义->公用方法->请求方法->页面按钮operate方法 进行sort
  * */
 
 let testData = ref('testData')
@@ -132,7 +132,7 @@ const errorLogImg = () => {
   imgShow.value = !imgShow.value
 }
 
-/*表格查询和筛选*/
+/*格Search和筛选*/
 let usertableData = ref([])
 import packages from '/package.json'
 let searchForm = reactive({
@@ -186,10 +186,7 @@ const searchBtnClick = () => {
   selectPageReq()
 }
 
-/*添加和修改*/
-/*详情*/
 let detailData = ref({})
-/*删除*/
 let { elConfirm, elMessage } = useElement()
 let deleteByIdReq = (id) => {
   return axiosReq({
@@ -201,18 +198,16 @@ let deleteByIdReq = (id) => {
   })
 }
 let tableDelClick = async (row) => {
-  await elConfirm('确定', `您确定要删除【${row.pageUrl}】吗？`)
+  await elConfirm('Sure', `Are you sure you want to delete【${row.pageUrl}】？`)
     .then(() => {
       deleteByIdReq(row.id).then(() => {
         selectPageReq()
-        elMessage(`【${row.pageUrl}】删除成功`)
+        elMessage(`【${row.pageUrl}】successfully deleted`)
       })
     })
-    //不写catch会报错
     .catch(() => {})
 }
 
-/*批量删除*/
 let multipleSelection = ref([])
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
@@ -225,11 +220,11 @@ const multiDelBtnClick = async () => {
     return mItem.id
   })
   if (rowDeleteIdArr.length === 0) {
-    elMessage('表格选项不能为空', 'warning')
+    elMessage('Form options cannot be empty', 'warning')
     return
   }
   let stringLength = deleteNameTitle.length - 1
-  await elConfirm('删除', `您确定要删除【${deleteNameTitle.slice(0, stringLength)}】吗`)
+  await elConfirm('delete', `【${deleteNameTitle.slice(0, stringLength)}】`)
   const data = rowDeleteIdArr
   axiosReq({
     url: `/integration-front/errorCollection/deleteBatchIds`,
@@ -237,14 +232,13 @@ const multiDelBtnClick = async () => {
     method: 'DELETE',
     bfLoading: true
   }).then(() => {
-    elMessage('删除成功')
+    elMessage('successfully deleted')
     selectPageReq()
   })
 }
 </script>
 
 <style scoped lang="scss">
-/*详情*/
 .detail-container {
   flex-wrap: wrap;
 }

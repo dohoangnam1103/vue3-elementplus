@@ -69,7 +69,7 @@ export function filterAsyncRoutes(routes, roles) {
 
 export const usePermissionStore = defineStore('permission', {
   /***
-   *类似于组件的 data数据的 ,用来存储全局状态的
+   *类似于组件的 datadata的 ,用来存储全局state的
    * 1、必须是箭头函数
    */
   state: () => {
@@ -81,7 +81,7 @@ export const usePermissionStore = defineStore('permission', {
   },
 
   /***
-   *封装处理数据的函数（业务逻辑)：修改数据
+   *封装处理data的函数（业务逻辑)：修改data
    */
   actions: {
     M_routes(routes) {

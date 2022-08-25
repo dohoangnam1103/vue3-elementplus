@@ -13,10 +13,10 @@ const SECRET_KEY = CryptoJS.enc.Utf8.parse('3333e6e143439161')
 // 十六位十六进制数作为密钥偏移量
 const SECRET_IV = CryptoJS.enc.Utf8.parse('e3bbe7e3ba84431a')
 
-// 类型 window.localStorage,window.sessionStorage,
+// type window.localStorage,window.sessionStorage,
 const config = {
-  type: 'localStorage', // 本地存储类型 sessionStorage
-  prefix: 'PD', // 名称前缀 建议：项目名 + 项目版本
+  type: 'localStorage', // 本地存储type sessionStorage
+  prefix: 'PD', // name称前缀 建议：项目name + 项目版本
   expire: 1, //过期时间 单位：秒
   isEncrypt: true // 默认加密 为了调试方便, 开发过程中可以不加密
 }
@@ -46,7 +46,7 @@ export const setStorage = (key, value, expire = 0) => {
   window[config.type].setItem(autoAddPrefix(key), encryptString)
 }
 
-// 获取 getStorage
+// Obtain getStorage
 export const getStorage = (key) => {
   key = autoAddPrefix(key)
   // key 不存在判断
@@ -61,7 +61,7 @@ export const getStorage = (key) => {
 
   let nowTime = Date.now()
 
-  // 过期删除
+  // 过期delete
   if (storage.expire && config.expire * 6000 < nowTime - storage.time) {
     removeStorage(key)
     return null
@@ -81,7 +81,7 @@ export const hasStorage = (key) => {
   return arr.length ? true : false
 }
 
-// 获取所有key
+// Obtain所有key
 export const getStorageKeys = () => {
   let items = getStorageAll()
   let keys = []
@@ -91,24 +91,24 @@ export const getStorageKeys = () => {
   return keys
 }
 
-// 根据索引获取key
+// 根据索引Obtainkey
 export const getStorageForIndex = (index) => {
   return window[config.type].key(index)
 }
 
-// 获取localStorage长度
+// ObtainlocalStorage长度
 export const getStorageLength = () => {
   return window[config.type].length
 }
 
-// 获取全部 getAllStorage
+// Obtain全部 getAllStorage
 export const getStorageAll = () => {
-  let len = window[config.type].length // 获取长度
-  let arr = [] // 定义数据集
+  let len = window[config.type].length // Obtain长度
+  let arr = [] // 定义data集
   for (let i = 0; i < len; i++) {
-    // 获取key 索引从0开始
+    // Obtainkey 索引从0Start
     let getKey = window[config.type].key(i)
-    // 获取key对应的值
+    // Obtainkey对应的值
     let getVal = window[config.type].getItem(getKey)
     // 放进数组
     arr[i] = { key: getKey, val: getVal }
@@ -116,17 +116,17 @@ export const getStorageAll = () => {
   return arr
 }
 
-// 删除 removeStorage
+// delete removeStorage
 export const removeStorage = (key) => {
   window[config.type].removeItem(autoAddPrefix(key))
 }
 
-// 清空 clearStorage
+// empty clearStorage
 export const clearStorage = () => {
   window[config.type].clear()
 }
 
-// 名称前自动添加前缀
+// name称前自动添加前缀
 const autoAddPrefix = (key) => {
   const prefix = config.prefix ? config.prefix + '_' : ''
   return prefix + key

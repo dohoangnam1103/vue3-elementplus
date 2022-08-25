@@ -2,7 +2,7 @@
  * 传入file
  * return file
  * 1.file转为img
- * 2.img转为canvas,且添加文字提示
+ * 2.img转为canvas,且添加文Character提示
  * 3.canvas转为img
  * 4.img.src base64转为file
  * */
@@ -34,7 +34,7 @@ async function imgToCanvas(img) {
   const canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
-  // 坐标(0,0) 表示从此处开始绘制，相当于偏移。
+  // 坐标(0,0) 示从此处Start绘制，相当于偏移。
   canvas.getContext('2d').drawImage(img, 0, 0)
   return canvas
 }
@@ -42,7 +42,7 @@ async function imgToCanvas(img) {
 /**
  * canvas添加水印
  * @param {canvas对象} canvas
- * @param {水印文字} texts
+ * @param {水印文Character} texts
  */
 function addWatermark(canvas, texts) {
   const [text1] = texts
@@ -66,7 +66,7 @@ function addWatermark(canvas, texts) {
 function convasToImg(canvas) {
   // 新建Image对象，可以理解为DOM
   const image = new Image()
-  // canvas.toDataURL 返回的是一串Base64编码的URL
+  // canvas.toDataURL Back的是一串Base64编码的URL
   // 指定格式 PNG
   image.src = canvas.toDataURL('image/png')
   return image

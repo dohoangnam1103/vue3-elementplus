@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import Layout from '@/layout'
 
 /* Router Modules */
@@ -47,7 +47,7 @@ export const constantRoutes = [
       }
     ]
   },
-  codeGenerator,
+  // codeGenerator,
   {
     path: '/setting-switch',
     component: Layout,
@@ -60,39 +60,39 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/guide',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index.vue'),
-        name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide' }
-      }
-    ]
-  },
-  {
-    path: '/error-log',
-    component: Layout,
-    name: 'ErrorLog',
-    redirect: '/error-log/list',
-    meta: { title: 'ErrorLog', icon: 'bug' },
-    children: [
-      {
-        path: 'list',
-        component: () => import('@/views/error-log'),
-        name: 'ErrorLog',
-        meta: { title: 'ErrorLog' }
-      },
-      {
-        path: 'error-log-test',
-        component: () => import('@/views/error-log/ErrorLogTest.vue'),
-        name: 'ErrorLogTest',
-        meta: { title: 'ErrorLog Test' }
-      }
-    ]
-  },
+  // {
+  //   path: '/guide',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/guide/index.vue'),
+  //       name: 'Guide',
+  //       meta: { title: 'Guide', icon: 'guide' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/error-log',
+  //   component: Layout,
+  //   name: 'ErrorLog',
+  //   redirect: '/error-log/list',
+  //   meta: { title: 'ErrorLog', icon: 'bug' },
+  //   children: [
+  //     {
+  //       path: 'list',
+  //       component: () => import('@/views/error-log'),
+  //       name: 'ErrorLog',
+  //       meta: { title: 'ErrorLog' }
+  //     },
+  //     {
+  //       path: 'error-log-test',
+  //       component: () => import('@/views/error-log/ErrorLogTest.vue'),
+  //       name: 'ErrorLogTest',
+  //       meta: { title: 'ErrorLog Test' }
+  //     }
+  //   ]
+  // },
   {
     path: '/nested',
     component: Layout,
@@ -151,17 +151,8 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://github.com/jzfai/vue3-admin-plus.git',
-        meta: { title: 'ExternalLink', icon: 'link' }
-      }
-    ]
-  },
-  chartsRouter,
+  
+  // chartsRouter,
   {
     path: '/excel',
     component: Layout,
@@ -347,7 +338,17 @@ export const constantRoutes = [
         meta: { title: 'v-clickoutside' }
       }
     ]
-  }
+  },
+  {
+    path: '/external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://speechanalyzer.elsaspeak.com/',
+        meta: { title: 'ExternalLink', icon: 'link' }
+      }
+    ]
+  },
 ]
 
 /**
@@ -359,7 +360,7 @@ export const asyncRoutes = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
+    alwaysShow: false, // will always show the root menu
     name: 'Permission',
     meta: {
       title: 'Permission',
@@ -419,7 +420,7 @@ export const asyncRoutes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   scrollBehavior: () => ({ top: 0 }),
   routes: constantRoutes
 })

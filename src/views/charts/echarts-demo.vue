@@ -1,17 +1,17 @@
 <template>
   <div class="scroll-y">
-    <div className="mb-1">折线图</div>
+    <div className="mb-1">line chart</div>
     <div className="rowSS">
-      <div id="echartsContainerLineF" style="width: 550px; height: 400px"></div>
+      <!-- <div id="echartsContainerLineF" style="width: 550px; height: 400px"></div> -->
       <div id="echartsContainerLineS" style="width: 550px; height: 400px"></div>
     </div>
-    <div className="mb-1">柱状图</div>
+    <div className="mb-1">Histogram</div>
     <div className="rowSS">
       <div id="echartsContainerBarF" style="width: 550px; height: 400px"></div>
       <div id="echartsContainerBarS" style="width: 550px; height: 400px"></div>
     </div>
 
-    <div className="mb-1">饼图</div>
+    <div className="mb-1">Pie chart</div>
     <div className="rowSS">
       <div id="echartsContainerPieF" style="width: 550px; height: 400px"></div>
       <div id="echartsContainerPieS" style="width: 550px; height: 400px"></div>
@@ -22,14 +22,13 @@
 //echarts 例子地址 https://echarts.apache.org/examples/zh/index.html#chart-type-line
 import * as echarts from 'echarts'
 import { onMounted, ref } from 'vue'
-/*折线图*/
 let echartsInstanceF = ref(null)
 const initEchartsF = () => {
   echartsInstanceF.value = echarts.init(document.getElementById('echartsContainerLineF'))
   let option = {
     title: {
-      text: '一天用电量分布',
-      subtext: '纯属虚构'
+      text: 'Distribution of electricity consumption in a day',
+      subtext: 'pure fiction'
     },
     tooltip: {
       trigger: 'axis',
@@ -109,7 +108,7 @@ const initEchartsF = () => {
     },
     series: [
       {
-        name: '用电量',
+        name: 'energy used',
         type: 'line',
         smooth: true,
         data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
@@ -120,7 +119,7 @@ const initEchartsF = () => {
           data: [
             [
               {
-                name: '早高峰',
+                name: 'morning peak',
                 xAxis: '07:30'
               },
               {
@@ -129,7 +128,7 @@ const initEchartsF = () => {
             ],
             [
               {
-                name: '晚高峰',
+                name: 'evening peak',
                 xAxis: '17:30'
               },
               {
@@ -196,14 +195,14 @@ const initBarS = () => {
   echartsBarS.value = echarts.init(document.getElementById('echartsContainerBarS'))
   let option = {
     title: {
-      text: '某地区蒸发量和降水量',
-      subtext: '纯属虚构'
+      text: 'Evaporation and precipitation in an area',
+      subtext: 'pure fiction'
     },
     tooltip: {
       trigger: 'axis'
     },
     legend: {
-      data: ['蒸发量', '降水量']
+      data: ['Evaporation', 'Precipitation']
     },
     toolbox: {
       show: true,
@@ -218,7 +217,7 @@ const initBarS = () => {
     xAxis: [
       {
         type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
       }
     ],
     yAxis: [
@@ -228,31 +227,31 @@ const initBarS = () => {
     ],
     series: [
       {
-        name: '蒸发量',
+        name: 'Evaporation',
         type: 'bar',
         data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
         markPoint: {
           data: [
-            { type: 'max', name: '最大值' },
-            { type: 'min', name: '最小值' }
+            { type: 'max', name: 'maximum' },
+            { type: 'min', name: 'minimum' }
           ]
         },
         markLine: {
-          data: [{ type: 'average', name: '平均值' }]
+          data: [{ type: 'average', name: 'average value' }]
         }
       },
       {
-        name: '降水量',
+        name: 'Precipitation',
         type: 'bar',
         data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
         markPoint: {
           data: [
-            { name: '年最高', value: 182.2, xAxis: 7, yAxis: 183 },
-            { name: '年最低', value: 2.3, xAxis: 11, yAxis: 3 }
+            { name: 'year highest', value: 182.2, xAxis: 7, yAxis: 183 },
+            { name: 'year minimum', value: 2.3, xAxis: 11, yAxis: 3 }
           ]
         },
         markLine: {
-          data: [{ type: 'average', name: '平均值' }]
+          data: [{ type: 'average', name: 'average value' }]
         }
       }
     ]
@@ -266,8 +265,8 @@ const initPieF = () => {
   echartsPieF.value = echarts.init(document.getElementById('echartsContainerPieF'))
   let option = {
     title: {
-      text: '某站点用户访问来源',
-      subtext: '纯属虚构',
+      text: 'User access source of a site',
+      subtext: 'pure fiction',
       left: 'center'
     },
     tooltip: {
@@ -279,15 +278,15 @@ const initPieF = () => {
     },
     series: [
       {
-        name: '访问来源',
+        name: 'access source',
         type: 'pie',
         radius: '50%',
         data: [
-          { value: 1048, name: '搜索引擎' },
-          { value: 735, name: '直接访问' },
-          { value: 580, name: '邮件营销' },
-          { value: 484, name: '联盟广告' },
-          { value: 300, name: '视频广告' }
+          { value: 1048, name: 'search engine' },
+          { value: 735, name: 'direct interview' },
+          { value: 580, name: 'email marketing' },
+          { value: 484, name: 'affiliate advertising' },
+          { value: 300, name: 'video ad' }
         ],
         emphasis: {
           itemStyle: {
@@ -314,7 +313,7 @@ const initPieS = () => {
     },
     series: [
       {
-        name: '访问来源',
+        name: 'access source',
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
@@ -333,11 +332,11 @@ const initPieS = () => {
           show: false
         },
         data: [
-          { value: 1048, name: '搜索引擎' },
-          { value: 735, name: '直接访问' },
-          { value: 580, name: '邮件营销' },
-          { value: 484, name: '联盟广告' },
-          { value: 300, name: '视频广告' }
+          { value: 1048, name: 'search engine' },
+          { value: 735, name: 'direct interview' },
+          { value: 580, name: 'email marketing' },
+          { value: 484, name: 'affiliate advertising' },
+          { value: 300, name: 'video ad' }
         ]
       }
     ]

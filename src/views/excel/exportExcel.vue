@@ -1,12 +1,12 @@
 <template>
   <div class="app-container scroll-y">
     <div class="mb-1">
-      <el-input v-model="fileName" class="w-150px" placeholder="文件名" />
+      <el-input v-model="fileName" class="w-150px" placeholder="file name" />
       <el-button class="ml" type="primary" @click="handleExportExcel">
         <el-icon style="vertical-align: middle">
           <Download />
         </el-icon>
-        <span style="vertical-align: middle">导出</span>
+        <span style="vertical-align: middle">export</span>
       </el-button>
     </div>
 
@@ -67,19 +67,19 @@ const fetchData = () => {
     state.listLoading = false
   })
 }
-// 导出Excel表格
+// exportExcel格
 const fileName = ref('')
 const handleExportExcel = () => {
   if (!unref(fileName).trim()) {
     ElMessage({
       showClose: true,
-      message: '请输入文件名',
+      message: 'Please enter a file name',
       type: 'warning'
     })
     return
   }
   let table = unref(state.list)
-  let header = ['ID', '订单号', '价格', '用户名']
+  let header = ['ID', 'order number', 'price', 'username']
   let data = table.map((item, index) => {
     let { id, order_no, price, username } = item
     return [index, order_no, price, username]
@@ -91,7 +91,7 @@ const handleExportExcel = () => {
   })
 }
 
-//导出属性到页面中使用
+//export属性到页面中使用
 let { list, listLoading } = toRefs(state)
 </script>
 

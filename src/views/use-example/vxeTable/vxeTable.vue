@@ -57,20 +57,20 @@ const gridOptions = reactive({
     titleWidth: 100,
     titleAlign: 'right',
     items: [
-      { field: 'name', title: '名字', span: 8, titlePrefix: { message: '可自定义任何内容', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$input', props: { placeholder: '请输入名称' } } },
-      { field: 'email', title: '邮件', span: 8, titlePrefix: { useHTML: true, message: '点击链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$input', props: { placeholder: '请输入邮件' } } },
+      { field: 'name', title: 'nameCharacter', span: 8, titlePrefix: { message: '可自定义任何内容', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$input', props: { placeholder: '请输入name称' } } },
+      { field: 'email', title: '邮件', span: 8, titlePrefix: { useHTML: true, message: 'click链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$input', props: { placeholder: '请输入邮件' } } },
       { field: 'nickname', title: '昵称', span: 8, itemRender: { name: '$input', props: { placeholder: '请输入昵称' } } },
       { field: 'role', title: '角色', span: 8, folding: true, itemRender: { name: '$input', props: { placeholder: '请输入角色' } } },
-      { field: 'sex', title: '性别', span: 8, folding: true, titleSuffix: { message: '注意，必填信息！', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$select', options: [] } },
+      { field: 'sex', title: '性别', span: 8, folding: true, titleSuffix: { message: '注意，必填information！', icon: 'vxe-icon-question-circle-fill' }, itemRender: { name: '$select', options: [] } },
       { field: 'age', title: '年龄', span: 8, folding: true, itemRender: { name: '$input', props: { type: 'number', min: 1, max: 120, placeholder: '请输入年龄' } } },
-      { span: 24, align: 'center', collapseNode: true, itemRender: { name: '$buttons', children: [{ props: { type: 'submit', content: '查询', status: 'primary' } }, { props: { type: 'reset', content: '重置' } }] } }
+      { span: 24, align: 'center', collapseNode: true, itemRender: { name: '$buttons', children: [{ props: { type: 'submit', content: 'Search', status: 'primary' } }, { props: { type: 'reset', content: '重置' } }] } }
     ]
   },
   toolbarConfig: {
     buttons: [
-      { code: 'insert_actived', name: '新增' },
-      { code: 'delete', name: '直接删除' },
-      { code: 'mark_cancel', name: '删除/取消' },
+      { code: 'insert_actived', name: 'new' },
+      { code: 'delete', name: '直接delete' },
+      { code: 'mark_cancel', name: 'delete/取消' },
       { code: 'save', name: '保存', status: 'success' }
     ],
     refresh: true,
@@ -82,20 +82,20 @@ const gridOptions = reactive({
   },
   proxyConfig: {
     seq: true, // 启用动态序号代理，每一页的序号会根据当前页数变化
-    sort: true, // 启用排序代理，当点击排序时会自动触发 query 行为
-    filter: true, // 启用筛选代理，当点击筛选时会自动触发 query 行为
-    form: true, // 启用表单代理，当点击表单提交按钮时会自动触发 reload 行为
+    sort: true, // 启用sort代理，当clicksort时会自动触发 query 行为
+    filter: true, // 启用筛选代理，当click筛选时会自动触发 query 行为
+    form: true, // 启用单代理，当click单提交按钮时会自动触发 reload 行为
     // 对应响应结果 { result: [], page: { total: 100 } }
     props: {
-      result: 'result', // 配置响应结果列表字段
-      total: 'page.total' // 配置响应结果总页数字段
+      result: 'result', // 配置响应结果列 field 
+      total: 'page.total' // 配置响应结果总页数 field 
     },
     // 只接收Promise，具体实现自由发挥
     ajax: {
-      // 当点击工具栏查询按钮或者手动提交指令 query或reload 时会被触发
+      // 当click工具栏Search按钮或者手动提交指令 query或reload 时会被触发
       query: async ({ page, sorts, filters, form }) => {
         const queryParams = Object.assign({}, form)
-        // 处理排序条件
+        // 处理sort条件
         const firstSort = sorts[0]
         if (firstSort) {
           queryParams.sort = firstSort.field
@@ -108,12 +108,12 @@ const gridOptions = reactive({
         const response=await fetch(`${serveApiUrl.value}/api/pub/page/list/${page.pageSize}/${page.currentPage}?${XEUtils.serialize(queryParams)}`)
         return await response.json()
       },
-      // 当点击工具栏删除按钮或者手动提交指令 delete 时会被触发
+      // 当click工具栏delete按钮或者手动提交指令 delete 时会被触发
       delete: async ({ body }) => {
         const response=await fetch(`${serveApiUrl.value}/api/pub/save`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
         return await response.json()
       },
-      // 当点击工具栏保存按钮或者手动提交指令 save 时会被触发
+      // 当click工具栏保存按钮或者手动提交指令 save 时会被触发
       save: async ({ body }) => {
         const response=await fetch(`${serveApiUrl.value}/api/pub/save`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
         return await response.json()
@@ -122,12 +122,12 @@ const gridOptions = reactive({
           },
   columns: [
     { type: 'checkbox', title: 'ID', width: 120 },
-    { field: 'name', title: 'Name', sortable: true, titlePrefix: { message: '名称必须填写！' }, editRender: { name: 'input', attrs: { placeholder: '请输入名称' } } },
+    { field: 'name', title: 'Name', sortable: true, titlePrefix: { message: 'name称必须填写！' }, editRender: { name: 'input', attrs: { placeholder: '请输入name称' } } },
     {
       field: 'role',
       title: 'Role',
       sortable: true,
-      titlePrefix: { useHTML: true, content: '点击链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>' },
+      titlePrefix: { useHTML: true, content: 'click链接：<a class="link" href="https://vxetable.cn" target="_blank">vxe-table官网</a>' },
       filters: [
         { label: '前端开发', value: '前端' },
         { label: '后端开发', value: '后端' },
@@ -183,7 +183,7 @@ const gridOptions = reactive({
     remote: true,
     types: ['xlsx'],
     modes: ['insert'],
-    // 自定义服务端导入
+    // 自定义服务端import
     async importMethod ({ file }) {
       const $grid = xGrid.value
       const formBody = new FormData()
@@ -191,11 +191,11 @@ const gridOptions = reactive({
       try {
         const response=await fetch(`${serveApiUrl.value}/api/pub/import`, { method: 'POST', body: formBody })
         const data=await response.json()
-        VXETable.modal.message({ content: `成功导入 ${data.result.insertRows} 条记录！`, status: 'success' })
-        // 导入完成，刷新表格
+        VXETable.modal.message({ content: `成功import ${data.result.insertRows} 条记录！`, status: 'success' })
+        // import完成，refresh格
         $grid.commitProxy('query')
       } catch(e) {
-        VXETable.modal.message({ content: '导入失败，请检查数据是否正确！', status: 'error' })
+        VXETable.modal.message({ content: 'import失败，请检查data是否正确！', status: 'error' })
       }
     }
   },
@@ -203,7 +203,7 @@ const gridOptions = reactive({
     remote: true,
     types: ['xlsx'],
     modes: ['current', 'selected', 'all'],
-    // 自定义服务端导出
+    // 自定义服务端export
     async exportMethod ({ options }) {
       const $grid = xGrid.value
       const proxyInfo = $grid.getProxyInfo()
@@ -223,22 +223,22 @@ const gridOptions = reactive({
           }
         })
       }
-      // 开始服务端导出
+      // Start服务端export
       try {
         const response=await fetch(`${serveApiUrl.value}/api/pub/export`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
         const data=await response.json()
         if(data.id) {
-          VXETable.modal.message({ content: '导出成功，开始下载', status: 'success' })
+          VXETable.modal.message({ content: 'export成功，Start下载', status: 'success' })
           // 读取路径，请求文件
           fetch(`${serveApiUrl.value}/api/pub/export/download/${data.id}`).then(response_1 => {
             response_1.blob().then(blob => {
-              // 开始下载
-              VXETable.saveFile({ filename: '导出数据', type: 'xlsx', content: blob })
+              // Start下载
+              VXETable.saveFile({ filename: 'exportdata', type: 'xlsx', content: blob })
             })
           })
         }
       } catch(e) {
-        VXETable.modal.message({ content: '导出失败！', status: 'error' })
+        VXETable.modal.message({ content: 'export失败！', status: 'error' })
       }
     }
   },
@@ -251,7 +251,7 @@ const gridOptions = reactive({
   editRules: {
     name: [
       { required: true, message: 'app.body.valid.rName' },
-      { min: 3, max: 50, message: '名称长度在 3 到 50 个字符' }
+      { min: 3, max: 50, message: 'name称长度在 3 到 50 个Character符' }
     ],
     email: [
       { required: true, message: '邮件必须填写' }

@@ -8,7 +8,6 @@ let loadingE
 
 const service = axios.create()
 
-// 请求拦截
 service.interceptors.request.use(
   (request) => {
     // token setting
@@ -25,13 +24,12 @@ service.interceptors.request.use(
     if (request.bfLoading) {
       loadingE = ElLoading.service({
         lock: true,
-        text: '数据载入中',
+        text: 'data loading',
         // spinner: 'el-icon-ElLoading',
         background: 'rgba(0, 0, 0, 0.1)'
       })
     }
     /*
-     *params会拼接到url上
      * */
     if (request.isParams) {
       request.params = request.data
@@ -43,18 +41,15 @@ service.interceptors.request.use(
     Promise.reject(err)
   }
 )
-// 响应拦截
 service.interceptors.response.use(
   (res) => {
     if (reqConfig.afHLoading && loadingE) {
       loadingE.close()
     }
-    // 如果是下载文件直接返回
     if (reqConfig.isDownLoadFile) {
       return res
     }
     const { flag, msg, isNeedUpdateToken, updateToken, code } = res.data
-    //更新token保持登录状态
     if (isNeedUpdateToken) {
       setToken(updateToken)
     }
@@ -63,9 +58,9 @@ service.interceptors.response.use(
       return res.data
     } else {
       if (code === 403) {
-        ElMessageBox.confirm('请重新登录', {
-          confirmButtonText: '重新登录',
-          cancelButtonText: '取消',
+        ElMessageBox.confirm('Please login again', {
+          confirmButtonText: 'Re-register',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           const userStore = useUserStore()
@@ -81,21 +76,16 @@ service.interceptors.response.use(
           duration: 2 * 1000
         })
       }
-      //返回错误信息
-      //如果未catch 走unhandledrejection进行收集
-      //注：如果没有return 则，会放回到请求方法中.then ,返回的res为 undefined
       return Promise.reject(res.data)
     }
   },
   (err) => {
-    /*http错误处理，处理跨域，404，401，500*/
     if (loadingE) loadingE.close()
     ElMessage({
       message: err,
       type: 'error',
       duration: 2 * 1000
     })
-    //如果是跨域
     //Network Error,cross origin
     const errObj = {
       msg: err.toString(),

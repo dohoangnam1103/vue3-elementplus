@@ -5,7 +5,7 @@
     </slot>
     <div style="position: relative">
       <pan-thumb :image="avatar" class="panThumb" />
-      <mallki class-name="mallki-text" text="vue3-admin-plus" />
+      <mallki class-name="mallki-text" text="My profile" />
       <div style="padding-top: 35px" class="progress-item">
         <span>Vue</span>
         <el-progress :percentage="70" />

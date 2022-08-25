@@ -75,7 +75,7 @@ export default {
   login: {
     title: 'ユーザログイン',
     logIn: 'ログイン',
-    username: 'ユーザ名',
+    username: 'ユーザname',
     password: 'パスワード',
     any: 'password',
     thirdparty: '外部IDでログイン',
@@ -103,8 +103,8 @@ export default {
     documentation: 'ドキュメント',
     tinymceTips: 'tinymceは管理画面に重要な機能ですが、その同時に落とし穴がありあす。tinymceを使う道のりが大変でした。Tinymceを使う時に各自のプロジェクト状況で判断が必要です。ドキュメントはこちら',
     dropzoneTips: 'Third partyのパッケージを使わず、独自の実装しています。詳細は @/components/Dropzone',
-    stickyTips: 'ページの指定位置へスクロールした場合、表示されます。',
-    backToTopTips1: 'トップへスクロールが表示されます。',
+    stickyTips: 'ページの指定位置へスクロールした場合、示されます。',
+    backToTopTips1: 'トップへスクロールが示されます。',
     backToTopTips2: 'ボタンのスタイルはカスタマイズできます。例えば、show/hide、height、position。 またはElementのel-tooltipを使って、ツールチップを実装できます。',
     imageUploadTips: 'mockjsは使えないため、カスタマイズしています。公式の最新バージョンを使ってください。'
   },
@@ -126,7 +126,7 @@ export default {
     author: '作成者',
     readings: '閲覧数',
     status: 'ステータス',
-    actions: '操作',
+    actions: 'operate',
     edit: '編集',
     publish: '公開',
     draft: '下書き',
@@ -145,11 +145,11 @@ export default {
   excel: {
     export: 'エクスポート',
     selectedExport: 'エクスポート対象を選択してください。',
-    placeholder: 'ファイル名を入力してください。'
+    placeholder: 'ファイルnameを入力してください。'
   },
   zip: {
     export: 'エクスポート',
-    placeholder: 'ファイル名を入力してください。'
+    placeholder: 'ファイルnameを入力してください。'
   },
   pdf: {
     tips: 'window.print() を使ってPDFダウンロードしています。'

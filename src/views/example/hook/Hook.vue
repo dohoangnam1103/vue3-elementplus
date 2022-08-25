@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>ref1:{{ ref1 }},ref2:{{ ref2 }}</div>
-    <el-button @click="hookExample">执行hook方法</el-button>
+    <el-button @click="hookExample">Execute the hook method</el-button>
   </div>
 </template>
 
@@ -13,8 +13,8 @@ const hookExample = () => {
 }
 
 const refTest = ref('111')
-console.log(`获取到hook导出的数据${ref2}`)
-console.log(`获取到hook导出的数据${ref1}`)
+console.log(`Obtain到hookexport的data${ref2}`)
+console.log(`Obtain到hookexport的data${ref1}`)
 </script>
 
 <style scoped lang="scss"></style>

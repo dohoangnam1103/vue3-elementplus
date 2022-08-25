@@ -5,7 +5,7 @@ export default [
     response: () => {
       return {
         code: 0,
-        title: 'mock请求测试'
+        title: 'mock request test'
       }
     }
   }

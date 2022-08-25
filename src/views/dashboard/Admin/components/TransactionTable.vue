@@ -46,7 +46,7 @@ const fetchData = () => {
     state.list = response.data.items.slice(0, 8)
   })
 }
-//导出属性到页面中使用
+//export属性到页面中使用
 let { list } = toRefs(state)
 </script>
 

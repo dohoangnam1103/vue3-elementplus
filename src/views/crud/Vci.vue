@@ -1,18 +1,18 @@
 <template>
   <div class="scroll-y">
-    <!--操作-->
+    <!--operate-->
     <div class="mr-3 rowSS">
-      <el-button type="primary" @click="addBtnClick">新增</el-button>
-      <el-button type="primary" @click="multiDelBtnClick">删除</el-button>
-      <!--条件搜索-->
+      <el-button type="primary" @click="addBtnClick">new</el-button>
+      <el-button type="primary" @click="multiDelBtnClick">delete</el-button>
+      <!--条件search-->
       <el-form ref="refsearchForm" :inline="true" class="demo-searchForm ml-3">
         <el-form-item label-width="0px" label="" prop="sn" label-position="left">
-          <el-input v-model="searchForm.sn" class="w-150px" placeholder="设备号" />
+          <el-input v-model="searchForm.sn" class="w-150px" placeholder="Device No" />
         </el-form-item>
         <el-form-item label-width="0px" label="" prop="status" label-position="left">
-          <el-select v-model="searchForm.status" clearable placeholder="状态" class="w-120px">
-            <el-option label="未出库" :value="0" />
-            <el-option label="已出库" :value="1" />
+          <el-select v-model="searchForm.status" clearable placeholder="state" class="w-120px">
+            <el-option label="Not out of stock" :value="0" />
+            <el-option label="out of stock" :value="1" />
           </el-select>
         </el-form-item>
         <el-form-item label-width="0px" label="" prop="createTime" label-position="left">
@@ -23,14 +23,14 @@
             value-format="YYYY-MM-DD HH:mm:ss"
             style="width: 250px"
             range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            start-placeholder="start date"
+            end-placeholder="end date"
             @change="dateTimePacking"
           />
         </el-form-item>
       </el-form>
-      <!--查询按钮-->
-      <el-button type="primary" @click="searchBtnClick">搜索</el-button>
+      <!--Search按钮-->
+      <el-button type="primary" @click="searchBtnClick">search</el-button>
       <div class="ml-4">
         <ImportExportComp
           import-file-url="/integration-front/vci/importExcel"
@@ -42,7 +42,7 @@
         <el-button type="primary" @click="downloadTemplate">down template to test</el-button>
       </div>
     </div>
-    <!--表格和分页-->
+    <!--格和分页-->
     <el-table
       id="resetElementDialog"
       ref="refuserTable"
@@ -52,21 +52,21 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column align="center" type="selection" width="50" />
-      <el-table-column align="center" prop="sn" label="设备号" min-width="100" />
-      <el-table-column align="center" prop="hardVersion" label="硬件版本" min-width="100" />
-      <el-table-column align="center" prop="createTime" label="入库时间" width="150" />
-      <el-table-column align="center" prop="status" label="状态" min-width="100">
+      <el-table-column align="center" prop="sn" label="Device No" min-width="100" />
+      <el-table-column align="center" prop="hardVersion" label="hardware version" min-width="100" />
+      <el-table-column align="center" prop="createTime" label="time" width="150" />
+      <el-table-column align="center" prop="status" label="state" min-width="100">
         <template #default="{ row }">
-          <span v-if="row.status === 0">未出库</span>
-          <h4 v-if="row.status === 1" style="color: green">已出库</h4>
+          <span v-if="row.status === 0">Not out of stock</span>
+          <h4 v-if="row.status === 1" style="color: green">out of stock</h4>
         </template>
       </el-table-column>
-      <!--点击操作-->
-      <el-table-column align="center" label="操作" width="120px">
+      <!--clickoperate-->
+      <el-table-column align="center" label="operate" width="120px">
         <template #default="{ row }">
           <div class="rowSS">
-            <el-button text size="small" @click="tableEditClick(row)">编辑</el-button>
-            <el-button text size="small" @click="tableDelClick(row)">删除</el-button>
+            <el-button text size="small" @click="tableEditClick(row)">Edit</el-button>
+            <el-button text size="small" @click="tableDelClick(row)">delete</el-button>
           </div>
         </template>
       </el-table-column>
@@ -90,10 +90,10 @@
 <script setup>
 import { onMounted, getCurrentInstance, ref, reactive } from 'vue'
 import VciForm from './VciForm.vue'
-//获取子组件实例
+//Obtain子组件实例
 const refVciForm = ref(null)
 
-/*2.表格操作和查询*/
+/*2.格operate和Search*/
 let multipleSelection = ref([])
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
@@ -176,7 +176,7 @@ const hideComp = () => {
   showFrom.value = false
 }
 
-//删除
+//delete
 let { elMessage, elConfirm } = useElement()
 let deleteByIdReq = (id) => {
   return axiosReq({
@@ -188,13 +188,12 @@ let deleteByIdReq = (id) => {
   })
 }
 let tableDelClick = async (row) => {
-  await elConfirm('确定', `您确定要删除【${row.sn}】吗？`)
+  await elConfirm('Sure', `Are you sure you want to delete【${row.sn}】？`)
   deleteByIdReq(row.id).then(() => {
     selectPageReq()
-    elMessage(`【${row.sn}】删除成功`)
+    elMessage(`【${row.sn}】successfully deleted`)
   })
 }
-//批量删除
 const multiDelBtnClick = async () => {
   let rowDeleteIdArr = []
   let deleteNameTitle = ''
@@ -203,11 +202,11 @@ const multiDelBtnClick = async () => {
     return mItem.id
   })
   if (rowDeleteIdArr.length === 0) {
-    elMessage('表格选项不能为空', 'warning')
+    elMessage('Form options cannot be empty', 'warning')
     return
   }
   let stringLength = deleteNameTitle.length - 1
-  await elConfirm('删除', `您确定要删除${deleteNameTitle.slice(0, stringLength)}吗`)
+  await elConfirm('delete', `Are you sure you want to delete${deleteNameTitle.slice(0, stringLength)}`)
   const data = rowDeleteIdArr
   axiosReq({
     url: `/integration-front/vci/deleteBatchIds`,
@@ -215,7 +214,7 @@ const multiDelBtnClick = async () => {
     method: 'DELETE',
     bfLoading: true
   }).then(() => {
-    elMessage('删除成功')
+    elMessage('successfully deleted')
     selectPageReq()
   })
 }
@@ -231,7 +230,7 @@ const downloadTemplate = () => {
 </script>
 
 <style scoped lang="scss">
-/*详情*/
+/*Details*/
 .detail-container {
   flex-wrap: wrap;
 }

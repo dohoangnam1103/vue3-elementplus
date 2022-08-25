@@ -11,7 +11,7 @@
     >
       <template #trigger>
         <el-button type="primary" class="mb-1">
-          <el-icon><Upload /></el-icon>上传excel</el-button
+          <el-icon><Upload /></el-icon>upload excel</el-button
         >
       </template>
     </el-upload>
@@ -48,7 +48,7 @@ const handleOnChange = (uploadFile) => {
     });
 };
 
-//导出属性到页面中使用
+//export属性到页面中使用
 let { list, headers, listLoading } = toRefs(state);
 </script>
 

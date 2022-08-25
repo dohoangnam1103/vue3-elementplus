@@ -1,10 +1,10 @@
 const mixin = {
   data() {
     /* element form校验相关*/
-    // 密码必须为6-18位字母、数字
+    // 密码必须为6-18位Character母、数Character
     let passwordValid = (rule, value, callback) => {
       if (!/^(?![^a-zA-Z]+$)(?!\D+$)/.test(value)) {
-        callback(new Error('6-18位字母、数字'))
+        callback(new Error('6-18位Character母、数Character'))
       } else {
         callback()
       }
@@ -43,25 +43,25 @@ const mixin = {
       tableDataMixin: [],
       rowDeleteIdArrMixin: [],
       loadingIdMixin: null,
-      /* 表单*/
+      /* 单*/
       formModelMixin: {},
       subFormMixin: {},
       searchFormMixin: {},
-      /* 表单校验*/
+      /* 单校验*/
       formRules: {
-        isNotNull: [{ required: true, message: '该字段不能为空', trigger: 'blur' }],
+        isNotNull: [{ required: true, message: '该 field 不能为空', trigger: 'blur' }],
         isNotNullSecond: [{ required: true, message: '不能为空', trigger: 'blur' }],
         mLength8: [
-          { required: true, message: '该字段不能为空', trigger: 'blur' },
-          { max: 8, message: '最长为8个字符', trigger: 'blur' }
+          { required: true, message: '该 field 不能为空', trigger: 'blur' },
+          { max: 8, message: '最长为8个Character符', trigger: 'blur' }
         ],
         minLength7: [
-          { required: true, message: '该字段不能为空', trigger: 'blur' },
-          { min: 7, message: '最小7个字符', trigger: 'blur' }
+          { required: true, message: '该 field 不能为空', trigger: 'blur' },
+          { min: 7, message: '最小7个Character符', trigger: 'blur' }
         ],
         length17: [
-          { required: true, message: '该字段不能为空', trigger: 'blur' },
-          { min: 17, max: 17, message: '长度为17个字符', trigger: 'blur' }
+          { required: true, message: '该 field 不能为空', trigger: 'blur' },
+          { min: 17, max: 17, message: '长度为17个Character符', trigger: 'blur' }
         ],
         desc: [{ validator: validatePass, trigger: 'blur' }],
         upZeroInt: [{ validator: upZeroInt, trigger: 'blur' }],
@@ -117,13 +117,13 @@ const mixin = {
   methods: {
     /* 级联*/
     casHandleChangeMixin() {
-      // 解决目前级联选择器搜索输入报错问题
+      // 解决目前级联选择器search输入报错问题
       ++this.cascaderKey
     },
     /*
      * 通知弹框
      * message：通知的内容
-     * type：通知类型
+     * type：通知type
      * duration：通知显示时长（ms）
      * */
     elMessageMixin(message, type) {
@@ -141,7 +141,7 @@ const mixin = {
     elLoadingMixin() {
       this.loadingIdMixin = this.$loading({
         lock: true,
-        text: '数据载入中',
+        text: 'data loading',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.1)'
       })
@@ -149,7 +149,7 @@ const mixin = {
     /*
      * 提示
      * message: 提示内容
-     * type：提示类型
+     * type：提示type
      * title：提示标题
      * duration：提示时长（ms）
      * */
@@ -170,7 +170,7 @@ const mixin = {
     * return Promise
     * */
     elConfirmNoCancelBtnMixin(title, message) {
-      return this.$confirm(message || '你确定要删除吗', title || '确认框', {
+      return this.$confirm(message || '你确定要delete吗', title || '确认框', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         showCancelButton: false,
@@ -184,7 +184,7 @@ const mixin = {
      * return Promise
      * */
     elConfirmMixin(title, message) {
-      return this.$confirm(message || '你确定要删除吗', title || '确认框', {
+      return this.$confirm(message || '你确定要delete吗', title || '确认框', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

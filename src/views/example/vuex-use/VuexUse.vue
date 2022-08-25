@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>getter</div>
-    <el-button @click="getterFunc">获取getter:{{ getterValue }}</el-button>
+    <el-button @click="getterFunc">Obtaingetter:{{ getterValue }}</el-button>
     <div class="mt-2">commit</div>
     <el-button @click="c_openSideBar">c_openSideBar</el-button>
     <el-button @click="c_closeSideBar">c_closeSideBar</el-button>

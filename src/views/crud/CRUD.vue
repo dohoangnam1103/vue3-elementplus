@@ -1,24 +1,24 @@
 <template>
   <div class="scroll-y">
-    <!--操作-->
+    <!--operate-->
     <div class="mr-3 rowSS">
       <el-button type="primary" @click="addBtnClick">
         <el-icon style="vertical-align: middle">
           <FolderAdd />
         </el-icon>
-        <span style="vertical-align: middle">增加</span>
+        <span style="vertical-align: middle">Increase</span>
       </el-button>
       <el-button type="primary" @click="multiDelBtnClick">
         <el-icon style="vertical-align: middle">
           <Delete />
         </el-icon>
-        <span style="vertical-align: middle">删除</span>
+        <span style="vertical-align: middle">delete</span>
       </el-button>
-      <!--条件搜索-->
+      <!--条件search-->
       <el-form ref="refsearchForm" :inline="true" class="demo-searchForm ml-2">
         <el-form-item label-width="0px" label="" prop="username" label-position="left">
           <!--  --c -->
-          <el-input v-model="searchForm.name" class="w-150px" placeholder="品牌名字" />
+          <el-input v-model="searchForm.name" class="w-150px" placeholder="brand name" />
         </el-form-item>
         <el-form-item label-width="0px" label="" prop="createTime" label-position="left">
           <el-date-picker
@@ -28,16 +28,16 @@
             value-format="YYYY-MM-DD HH:mm:ss"
             style="width: 250px"
             range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            start-placeholder="start date"
+            end-placeholder="end date"
             @change="dateTimePacking"
           />
         </el-form-item>
       </el-form>
-      <!--查询按钮-->
-      <el-button type="primary" @click="searchBtnClick">查询</el-button>
+      <!--Search按钮-->
+      <el-button type="primary" @click="searchBtnClick">Search</el-button>
     </div>
-    <!--表格和分页-->
+    <!--格和分页-->
     <el-table
       id="resetElementDialog"
       ref="refuserTable"
@@ -47,22 +47,22 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="name" label="品牌名称" min-width="100" />
-      <el-table-column align="center" prop="image" label="品牌图片地址" min-width="100">
+      <el-table-column align="center" prop="name" label="brand name" min-width="100" />
+      <el-table-column align="center" prop="image" label="Brand image address" min-width="100">
         <template #default="{ row }">
           <img :src="row.image" class="w-120px heightPx-120" style="border-radius: 10px" />
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="letter" label="首字母" width="80" />
-      <el-table-column align="center" prop="seq" label="排序" width="80" />
-      <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
-      <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
-      <!--点击操作-->
-      <el-table-column fixed="right" align="center" label="操作" width="180">
+      <el-table-column align="center" prop="letter" label="Initials" width="80" />
+      <el-table-column align="center" prop="seq" label="sort" width="80" />
+      <el-table-column align="center" prop="createTime" label="creation time" width="140" />
+      <el-table-column align="center" prop="updateTime" label="update time" width="140" />
+      <!--clickoperate-->
+      <el-table-column fixed="right" align="center" label="operate" width="180">
         <template #default="{ row }">
-          <el-button text size="small" @click="tableEditClick(row)">编辑</el-button>
-          <el-button text size="small" @click="tableDetailClick(row)">详情</el-button>
-          <el-button text size="small" @click="tableDelClick(row)">删除</el-button>
+          <el-button text size="small" @click="tableEditClick(row)">Edit</el-button>
+          <el-button text size="small" @click="tableDetailClick(row)">Details</el-button>
+          <el-button text size="small" @click="tableDelClick(row)">delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,20 +79,20 @@
         @current-change="handleCurrentChange"
       />
     </div>
-    <!--详情-->
+    <!--Details-->
     <el-dialog v-model="detailDialog" :title="dialogTitle" width="500px" :close-on-click-modal="false">
       <div class="detail-container rowBC">
-        <div class="detail-container-item">品牌名称：{{ detailData.name }}</div>
+        <div class="detail-container-item">brand name：{{ detailData.name }}</div>
       </div>
       <div class="detail-container rowBC">
-        <div class="detail-container-item">品牌首字母：{{ detailData.letter }}</div>
+        <div class="detail-container-item">brand Initials：{{ detailData.letter }}</div>
       </div>
       <div class="detail-container rowBC">
-        <div class="detail-container-item">排序：{{ detailData.seq }}</div>
+        <div class="detail-container-item">sort：{{ detailData.seq }}</div>
       </div>
       <template #footer>
         <span class="dialog-footer">
-          <el-button type="primary" @click="detailDialog = false">确 定</el-button>
+          <el-button type="primary" @click="detailDialog = false">Ok</el-button>
         </span>
       </template>
     </el-dialog>
@@ -115,7 +115,7 @@ onActivated(() => {
 onDeactivated(() => {
   console.log('onDeactivated')
 })
-/*2.表格操作和查询*/
+/*2.格operate和Search*/
 let multipleSelection = ref([])
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
@@ -168,7 +168,7 @@ const searchBtnClick = () => {
   pageNum.value = 1
   selectPageReq()
 }
-//删除相关
+//delete相关
 let { elMessage, elConfirm } = useElement()
 const refuserTable = ref(null)
 const multiDelBtnClick = () => {
@@ -179,11 +179,11 @@ const multiDelBtnClick = () => {
     return mItem.id
   })
   if (rowDeleteIdArr.length === 0) {
-    elMessage('表格选项不能为空', 'warning')
+    elMessage('Form options cannot be empty', 'warning')
     return
   }
   let stringLength = deleteNameTitle.length - 1
-  elConfirm('删除', `您确定要删除【${deleteNameTitle.slice(0, stringLength)}】吗`)
+  elConfirm('delete', `Are you sure you want to delete【${deleteNameTitle.slice(0, stringLength)}】`)
     .then(() => {
       const data = rowDeleteIdArr
       axiosReq({
@@ -192,7 +192,7 @@ const multiDelBtnClick = () => {
         method: 'DELETE',
         bfLoading: true
       }).then((res) => {
-        elMessage('删除成功')
+        elMessage('successfully deleted')
         selectPageReq()
       })
     })
@@ -208,11 +208,11 @@ let deleteByIdReq = (id) => {
   })
 }
 let tableDelClick = (row) => {
-  elConfirm('确定', `您确定要删除【${row.name}】吗？`)
+  elConfirm('Sure', `Are you sure you want to delete【${row.name}】？`)
     .then(() => {
       deleteByIdReq(row.id).then(() => {
         selectPageReq()
-        elMessage(`【${row.name}】删除成功`)
+        elMessage(`【${row.name}】successfully deleted`)
       })
     })
     .catch(() => {})
@@ -240,11 +240,11 @@ let tableEditClick = (row) => {
     })
   })
 }
-/*3.详情modal*/
+/*3.Detailsmodal*/
 let detailData = ref({})
 let { dialogTitle, detailDialog } = useElement()
 let tableDetailClick = (row) => {
-  dialogTitle.value = `详情【${row.name}】`
+  dialogTitle.value = `Details【${row.name}】`
   getDetailByIdReq(row.id).then((resData) => {
     detailData.value = resData.data
     detailDialog.value = true
@@ -261,7 +261,7 @@ let getDetailByIdReq = (id) => {
 </script>
 
 <style scoped lang="scss">
-/*详情*/
+/*Details*/
 .detail-container {
   flex-wrap: wrap;
 }

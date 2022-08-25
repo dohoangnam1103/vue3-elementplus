@@ -1,16 +1,16 @@
 <template>
   <el-button v-if="showImport" type="primary" @click="goUploadFile">
-    导入
+    import
     <!--<slot name="fai" :data="{ a: 1 }" />-->
     <input ref="refSettingFile" type="file" style="display: none" accept=".xls, .xlsx" @change="excelValidReq" />
   </el-button>
-  <el-button v-if="showExport" type="primary" @click="exportExcelReq">导出</el-button>
+  <el-button v-if="showExport" type="primary" @click="exportExcelReq">export</el-button>
   <el-dialog v-if="dialogShow" v-model="dialogShow" :title="dialogTitle" width="500px" :close-on-click-modal="false">
-    <!--错误信息-->
+    <!--错误information-->
     <div v-if="!importInfo.checkResult" class="detail-container rowBC">
       <h4 v-for="(item, index) in importInfo.errList" :key="index" class="mbPx-4" style="color: red">{{ item }}</h4>
     </div>
-    <div v-else style="color: #13ce66">需要导入的 {{ importInfo.successNum }} 条数据，检测通过</div>
+    <div v-else style="color: #13ce66">需要import的 {{ importInfo.successNum }} 条data，检测通过</div>
     <template #footer>
       <span class="dialog-footer">
         <el-button :disabled="!importInfo.checkResult" type="primary" @click="excelImportReq">导 入</el-button>
@@ -56,9 +56,9 @@ const props = defineProps({
   }
 })
 
-/*考勤表导入*/
+/*考勤import*/
 let importInfo = ref({})
-let dialogTitle = ref('导入校验')
+let dialogTitle = ref('import校验')
 let dialogShow = ref(false)
 const refSettingFile = ref(null)
 let excelValidReq = () => {
@@ -95,11 +95,11 @@ let excelImportReq = () => {
     //通知父元素更新
     emit('reloadList')
     dialogShow.value = false
-    ElMessage({ message: '导入成功', type: 'success' })
+    ElMessage({ message: 'Success', type: 'success' })
   })
 }
 
-// 导出table文件
+// exporttable文件
 const exportExcelReq = () => {
   axiosReq({
     url: props.exportFileUrl,

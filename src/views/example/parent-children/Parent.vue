@@ -1,19 +1,19 @@
 <template>
   <div class="scroll-y">
-    <div>这是父组件</div>
+    <div>This is the parent component</div>
     <el-button @click="childMethod">childMethod</el-button>
 
     <!--v-model sync -->
     <Children ref="refChildren" v-model:childrenTitle="parentTitle" father-name="Vue3Template" @emitParent="emitParent">
-      <!--默认插槽 v-slot -->
+      <!--default slot v-slot -->
       <template #default>
-        <div>默认插槽</div>
+        <div>default slot</div>
       </template>
-      <!--具名插槽// v-slot:header -->
+      <!--with nameslot// v-slot:header -->
       <template #header>
-        <div>具名插槽</div>
+        <div>with nameslot</div>
       </template>
-      <!--作用域插槽  //v-slot:footer-->
+      <!--作用域slot  //v-slot:footer-->
       <template #footer="{ testProps }">
         <div>
           {{ testProps }}
@@ -31,7 +31,7 @@ import Children from './Children.vue'
 const refChildren = ref(null)
 
 onMounted(() => {
-  /*获取子元素方法*/
+  /*Obtain子元素方法*/
   console.log(refChildren.value)
 })
 const childMethod = () => {
@@ -39,7 +39,7 @@ const childMethod = () => {
   console.log(refChildren.value.childRef)
 }
 const emitParent = (data) => {
-  console.log('得到子组件的信息111', data)
+  console.log('得到子组件的information111', data)
 }
 const fartherMethod = () => {
   console.log('fartherMethod')

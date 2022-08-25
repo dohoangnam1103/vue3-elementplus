@@ -7,26 +7,26 @@
     :before-close="closeFormModal"
   >
     <el-form ref="refForm" label-width="150px" :inline="false" :model="subForm" :rules="formRules" class="pr-50px">
-      <el-form-item label="设备号" prop="sn" :rules="formRules.isNotNull" label-position="left">
-        <el-input v-model="subForm.sn" class="w-150px" placeholder="设备号" />
+      <el-form-item label="Device No" prop="sn" :rules="formRules.isNotNull" label-position="left">
+        <el-input v-model="subForm.sn" class="w-150px" placeholder="Device No" />
       </el-form-item>
-      <el-form-item label="硬件版本" prop="hardVersion" :rules="formRules.isNotNull" label-position="left">
-        <el-input v-model="subForm.hardVersion" class="w-150px" placeholder="硬件版本" />
+      <el-form-item label="hardware version" prop="hardVersion" :rules="formRules.isNotNull" label-position="left">
+        <el-input v-model="subForm.hardVersion" class="w-150px" placeholder="hardware version" />
       </el-form-item>
       <!--      <el-form-item label="软件(固件)版本" prop="softVersion" :rules="formRules.isNotNull" label-position="left">-->
       <!--        <el-input v-model="subForm.softVersion" class="w-150px" placeholder="软件(固件)版本" />-->
       <!--      </el-form-item>-->
-      <el-form-item label="状态：" prop="status" :rules="formRules.isNotNull" label-position="left">
+      <el-form-item label="state：" prop="status" :rules="formRules.isNotNull" label-position="left">
         <el-select v-model="subForm.status" clearable placeholder="请选择" class="w-120px">
-          <el-option label="未出库" :value="0" />
-          <el-option label="已出库" :value="1" />
+          <el-option label="Not out of stock" :value="0" />
+          <el-option label="out of stock" :value="1" />
         </el-select>
       </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closeFormModal">取 消</el-button>
-        <el-button type="primary" @click="confirmBtnClick">确 定</el-button>
+        <el-button type="primary" @click="confirmBtnClick">Ok</el-button>
       </span>
     </template>
   </el-dialog>
@@ -38,8 +38,8 @@ import { useCommon } from '@/hooks/global/useCommon'
 
 const emit = defineEmits(['selectPageReq', 'hideComp'])
 
-/*2.modal新增和修改*/
-//新增
+/*2.modalnew和修改*/
+//new
 const refForm = ref(null)
 let subForm = reactive({
   id: '',
@@ -73,7 +73,7 @@ const insertReq = () => {
     method: 'post',
     bfLoading: true
   }).then((res) => {
-    elMessage('保存成功')
+    elMessage('Successfully saved')
     emit('selectPageReq')
     emit('hideComp')
   })
@@ -95,7 +95,7 @@ let updateReq = () => {
     method: 'put',
     bfLoading: true
   }).then(() => {
-    elMessage('更新成功')
+    elMessage('update completed')
     emit('selectPageReq')
     emit('hideComp')
   })
@@ -105,25 +105,23 @@ let updateReq = () => {
 const { dialogTitle, dialogVisible } = useCommon()
 let showModal = (isEdit, detailData) => {
   if (isEdit) {
-    dialogTitle.value = `编辑【${detailData.sn}】`
+    dialogTitle.value = `edit【${detailData.sn}】`
     dialogVisible.value = true
     reshowData(detailData)
   } else {
-    dialogTitle.value = '添加【VCI设备表】'
+    dialogTitle.value = 'Add【VCI】'
     dialogVisible.value = true
   }
 }
 
-//关闭弹框
 let closeFormModal = () => {
   emit('hideComp')
 }
 
-//导出内部组件属性
 defineExpose({
   showModal
 })
-//导出属性到页面中使用
+//export属性到页面中使用
 // let {levelList} = toRefs(state);
 </script>
 

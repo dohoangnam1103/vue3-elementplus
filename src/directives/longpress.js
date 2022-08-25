@@ -1,6 +1,6 @@
 /**
  * v-longpress
- * 长按指令，长按时触发事件
+ * long press command，长按时触发事件
  */
 export default {
     mounted(el, binding) {

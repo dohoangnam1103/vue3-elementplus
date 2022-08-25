@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-//获取store和router
+//Obtainstore和router
 
 import { useUserStore } from '@/store/user'
 

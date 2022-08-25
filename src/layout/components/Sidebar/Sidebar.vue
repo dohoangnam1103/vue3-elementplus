@@ -21,7 +21,7 @@
 <script setup>
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-//导入配置文件
+//import配置文件
 const appStore = useAppStore()
 const settings = computed(() => {
   return appStore.settings

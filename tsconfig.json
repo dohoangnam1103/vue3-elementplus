@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    //	启用所有严格类型检查选项。
+    //	启用所有严格type检查选项。
     //启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict， --strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。
     "strict": true,
     // 允许编译器编译JS，JSX文件
@@ -16,9 +16,9 @@
     "removeComments": true,
     //不可以忽略any
     "noImplicitAny": true,
-    //关闭 this 类型注解提示
+    //关闭 this type注解提示
     "noImplicitThis": true,
-    //null/undefined不能作为其他类型的子类型：
+    //null/undefined不能作为其他type的子type：
     //let a: number = null; //这里会报错.
     "strictNullChecks": true,
     //生成枚举的映射代码
@@ -34,11 +34,11 @@
     "resolveJsonModule": true,
     //和noUnusedLocals一样，针对func
     "noUnusedParameters": false,
-    // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+    // 模块解析策略，ts默认用node的解析策略，即相对的方式import
     "moduleResolution": "node",
-    //允许export=导出，由import from 导入
+    //允许export=export，由import from import
     "esModuleInterop": true,
-    //忽略所有的声明文件（ *.d.ts）的类型检查。
+    //忽略所有的声明文件（ *.d.ts）的type检查。
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {

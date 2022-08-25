@@ -8,7 +8,7 @@ export default function useUserRepositories(state) {
     title: '车辆编号',
     field: 'bh'
   }, {
-    title: '数据时间',
+    title: 'data时间',
     field: 'sj'
   }, {
     title: '臂架电流',
@@ -57,7 +57,7 @@ export default function useUserRepositories(state) {
     title: '编码',
     field: 'xx'
   }, {
-    title: '部件名称',
+    title: '部件name称',
     field: 'ff'
   }, {
     title: 'url地址',
@@ -82,7 +82,7 @@ export default function useUserRepositories(state) {
     title: '车辆编码',
     field: 'id'
   }, {
-    title: '车辆名称',
+    title: '车辆name称',
     field: 'mc'
   }, {
     title: '节点颜色',

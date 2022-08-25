@@ -11,15 +11,15 @@ import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver/theme' // 主题文件
 import 'tinymce/icons/default'
 import 'tinymce/models/dom'
-// tinymce插件可按自己的需要进行导入
+// tinymce插件可按自己的需要进行import
 // 更多插件参考：https://www.tiny.cloud/docs/plugins/
-import 'tinymce/plugins/image' // 插入上传图片插件
+import 'tinymce/plugins/image' // 插入upload图片插件
 import 'tinymce/plugins/importcss' //图片工具
 import 'tinymce/plugins/media' // 插入视频插件
-import 'tinymce/plugins/table' // 插入表格插件
-import 'tinymce/plugins/lists' // 列表插件
-import 'tinymce/plugins/charmap' // 特殊字符
-import 'tinymce/plugins/wordcount' // 字数统计插件
+import 'tinymce/plugins/table' // 插入格插件
+import 'tinymce/plugins/lists' // 列插件
+import 'tinymce/plugins/charmap' // 特殊Character符
+import 'tinymce/plugins/wordcount' // Character数统计插件
 import 'tinymce/plugins/codesample' // 插入代码
 import 'tinymce/plugins/code' // 查看源码
 import 'tinymce/plugins/fullscreen' //全屏
@@ -27,7 +27,7 @@ import 'tinymce/plugins/link' //
 import 'tinymce/plugins/preview' // 预览
 import 'tinymce/plugins/template' //插入模板
 import 'tinymce/plugins/save' // 保存
-import 'tinymce/plugins/searchreplace' //查询替换
+import 'tinymce/plugins/searchreplace' //Search替换
 import 'tinymce/plugins/pagebreak' //分页
 import 'tinymce/plugins/insertdatetime' //时间插入
 
@@ -66,22 +66,22 @@ const init = {
   // skin_url: 'tinymce/skins/ui/oxide-dark',//黑色系
   content_css: './tinymce/skins/content/default/content.css', //内容区域css样式
   // images_file_types: "jpg,svg,webp",
-  // images_upload_url: "xxxxxxxxxxxxx",//系统默认配置的自动上传路径，需替换为真实路径测试
+  // images_upload_url: "xxxxxxxxxxxxx",//系统默认配置的自动upload路径，需替换为真实路径测试
   plugins: props.plugins,
   toolbar: props.toolbar,
   branding: false,
   // 隐藏菜单栏
   menubar: false,
-  // 是否显示底部状态栏
+  // 是否显示底部state栏
   statusbar: true,
   // convert_urls: false,
   // 初始化完成
   init_instance_callback: (editor) => {
     console.log('初始化完成：', editor)
   }
-  // 此处为自定义图片上传处理函数，
+  // 此处为自定义图片upload处理函数，
   // images_upload_handler: (blobInfo, progress) => {
-  //   console.log("图片上传处理：", blobInfo.blob());
+  //   console.log("图片upload处理：", blobInfo.blob());
   //   const formData = new FormData();
   //   formData.append("file", blobInfo.blob());
   //   axiosReq({
@@ -103,7 +103,7 @@ onMounted(() => {
 })
 
 // 添加相关的事件，可用的事件参照文档=> https://github.com/tinymce/tinymce-vue => All available events
-// 可以添加一些自己的自定义事件，如清空内容
+// 可以添加一些自己的自定义事件，如empty内容
 const clear = () => {
   textContent = ''
 }

@@ -9,7 +9,7 @@
         <el-input v-model="searchForm.pageUrl" class="w-150px" placeholder="input to test keepAlive" />
       </el-form-item>
     </el-form>
-    <el-button type="primary" @click="routerBack">返回</el-button>
+    <el-button type="primary" @click="routerBack">Back</el-button>
   </div>
 </template>
 

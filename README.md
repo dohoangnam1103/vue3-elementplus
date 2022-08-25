@@ -1,5 +1,4 @@
 # vue3-admin-plus
-
 **English** | [中文](./README-zh_CN.md)
 
 > vue3 admin plus provides enterprise-level development demo
@@ -15,18 +14,11 @@ Vite need  Node.js 16+
 
 - [official documentation](https://github.jzfai.top/vue3-admin-doc/)
 
-- [中文官网](https://github.jzfai.top/vue3-admin-doc/zh/)
-
 ## Online experience
 
 [github address](https://github.com/jzfai/vue3-admin-plus.git)
 
 [Access address](https://github.jzfai.top/vue3-admin-plus)
-
-国内体验地址：https://github.jzfai.top/vue3-admin-plus
-
-github 地址：  https://github.com/jzfai/vue3-admin-plus.git
-
 
 ## Related items
 
@@ -39,20 +31,12 @@ The framework is available in js, ts , plus and electron versions
 - java Micro-service background data：[micro-service-plus](https://github.com/jzfai/micro-service-plus)
 > development and  experience：two words  Really fragrant！！！！！
 
-
-
 #### Comparison of performance between vue3 and vue2
-
 - 41% reduction in package size
-
 - The initial rendering is 55% faster, the update rendering is 133% faster
-
 - Memory reduction 54%
-
 - **Use Proxy instead of defineProperty to implement data responsiveness**
-
 - **Rewrite the implementation of virtual DOM and Tree-Shaking**
-
 
 [Comparison of packaging speed between vite3 and webpack](https://github.com/jzfai/vue3-admin-plus/issues/2)
 
@@ -72,6 +56,11 @@ pnpm i
 
 # develop
 pnpm run dev
+
+or
+
+yarn i
+yarn run dev
 ```
 
 using the browser to open http://localhost:5006
@@ -81,6 +70,9 @@ using the browser to open http://localhost:5006
 ```bash
 # build for test environment
 pnpm run build-test
+
+# build for stag environment
+pnpm run  build:stag
 
 # build for production environment
 pnpm run  build
@@ -97,21 +89,6 @@ pnpm run lint
 
 ```
 
-## Extra
-
-Architecture development is not easy. If you feel good, please give me a **start**. The architecture is still being improved. Welcome to join me in development and become Contributors together! ! ! !
-
-
 ## Browsers support
 
 Note: Vue3 is not supported the Internet Explorer
-
-
-
-
-
-## Discussion and Communication
-[WeChat group](https://github.jzfai.top/file/images/wx-groud.png)
-
-
-

@@ -1,32 +1,32 @@
 <template>
   <div class="scroll-y">
-    <!--操作-->
+    <!--operate-->
     <div class="mr-3 rowSS">
       <el-button type="primary" @click="addBtnClick">
         <el-icon style="vertical-align: middle">
           <FolderAdd />
         </el-icon>
-        <span style="vertical-align: middle">增加</span>
+        <span style="vertical-align: middle">Increase</span>
       </el-button>
       <el-button type="primary" @click="multiDelBtnClick">
         <el-icon style="vertical-align: middle">
           <Delete />
         </el-icon>
-        <span style="vertical-align: middle">删除</span>
+        <span style="vertical-align: middle">delete</span>
       </el-button>
-      <!--条件搜索-->
+      <!--条件search-->
       <el-form ref="refsearchForm" :inline="true" class="demo-searchForm ml-2">
         <el-form-item prop="name">
-          <el-input v-model="searchForm.name" style="width: 120px" placeholder="选中的字段配置" />
+          <el-input v-model="searchForm.name" style="width: 120px" placeholder="Chosen field 配置" />
         </el-form-item>
         <el-form-item prop="generatorConfig">
           <el-input v-model="searchForm.generatorConfig" style="width: 120px" placeholder="生成的配置" />
         </el-form-item>
       </el-form>
-      <!--查询按钮-->
-      <el-button type="primary" @click="searchBtnClick">查询</el-button>
+      <!--Search按钮-->
+      <el-button type="primary" @click="searchBtnClick">Search</el-button>
     </div>
-    <!--表格和分页-->
+    <!--格和分页-->
     <el-table
       id="resetElementDialog"
       ref="refuserTable"
@@ -34,15 +34,15 @@
       border="border"
       :data="usertableData"
     >
-      <el-table-column align="center" prop="name" label="选中的字段配置" min-width="120" />
+      <el-table-column align="center" prop="name" label="Chosen field 配置" min-width="120" />
       <el-table-column align="center" prop="generatorConfig" label="生成的配置" min-width="120" />
-      <!--点击操作-->
-      <el-table-column fixed="right" align="center" label="操作" width="150">
+      <!--clickoperate-->
+      <el-table-column fixed="right" align="center" label="operate" width="150">
         <template #default="{ row }">
           <div class="rowSS reset-element-button-left">
-            <el-button type="text" size="small" @click="tableEditClick(row)">编辑</el-button>
-            <el-button type="text" size="small" @click="tableDetailClick(row)">详情</el-button>
-            <el-button type="text" size="small" @click="tableDelClick(row)">删除</el-button>
+            <el-button type="text" size="small" @click="tableEditClick(row)">Edit</el-button>
+            <el-button type="text" size="small" @click="tableDetailClick(row)">Details</el-button>
+            <el-button type="text" size="small" @click="tableDelClick(row)">delete</el-button>
           </div>
         </template>
       </el-table-column>
@@ -63,14 +63,14 @@
         <div class="detail-container-item">：{{ detailData.id }}</div>
       </div>
       <div class="detail-container rowBC">
-        <div class="detail-container-item">选中的字段配置：{{ detailData.name }}</div>
+        <div class="detail-container-item">Chosen field 配置：{{ detailData.name }}</div>
       </div>
       <div class="detail-container rowBC">
         <div class="detail-container-item">生成的配置：{{ detailData.generatorConfig }}</div>
       </div>
       <template #footer>
         <span class="dialog-footer">
-          <el-button type="primary" @click="detailDialog = false">确 定</el-button>
+          <el-button type="primary" @click="detailDialog = false">Ok</el-button>
         </span>
       </template>
     </el-dialog>
@@ -92,7 +92,7 @@ let totalPage = $ref(0)
 let startEndArr = $ref([])
 let usertableData = $ref([])
 let searchForm = reactive({ id: '', name: '', generatorConfig: '' })
-/*查询搜索相关*/
+/*Searchsearch相关*/
 let selectPageReq = () => {
   const data = Object.assign(searchForm, {
     pageNum: pageNum,
@@ -115,9 +115,9 @@ const searchBtnClick = () => {
   pageNum = 1
   selectPageReq()
 }
-//删除相关
+//delete相关
 let { elMessage, elConfirm } = useElement()
-//多个删除
+//多个delete
 const multipleSelection = $ref([])
 const refuserTable = $ref(null)
 const multiDelBtnClick = () => {
@@ -128,11 +128,11 @@ const multiDelBtnClick = () => {
     return mItem.id
   })
   if (rowDeleteIdArr.length === 0) {
-    elMessage('表格选项不能为空', 'warning')
+    elMessage('Form options cannot be empty', 'warning')
     return
   }
   let stringLength = deleteNameTitle.length - 1
-  elConfirm('删除', `您确定要删除${deleteNameTitle}吗`)
+  elConfirm('delete', `Are you sure you want to delete${deleteNameTitle}`)
     .then(() => {
       const data = rowDeleteIdArr
       axiosReq({
@@ -141,13 +141,13 @@ const multiDelBtnClick = () => {
         method: 'delete',
         bfLoading: true
       }).then((res) => {
-        elMessage('删除成功')
+        elMessage('successfully deleted')
         selectPageReq()
       })
     })
     .catch(() => {})
 }
-//单个删除
+//单个delete
 let deleteByIdReq = (id) => {
   return axiosReq({
     url: '/integration-front/generatorConfigSave/deleteById',
@@ -158,16 +158,15 @@ let deleteByIdReq = (id) => {
   })
 }
 let tableDelClick = (row) => {
-  elConfirm('确定', `您确定要删除【${row.name}】吗？`)
+  elConfirm('Sure', `Are you sure you want to delete【${row.name}】？`)
     .then(() => {
       deleteByIdReq(row.id).then(() => {
         selectPageReq()
-        elMessage(`【${row.name}】删除成功`)
+        elMessage(`【${row.name}】successfully deleted`)
       })
     })
     .catch(() => {})
 }
-//添加和修改
 let tableEditClick = (row) => {
   getDetailByIdReq(row.id).then((resData) => {
     showFrom = true
@@ -187,12 +186,12 @@ let addBtnClick = () => {
 const hideComp = () => {
   showFrom = false
 }
-/*3.详情modal*/
+/*3.modal*/
 let detailData = $ref({})
 let dialogTitle = $ref('')
 let detailDialog = $ref(false)
 let tableDetailClick = (row) => {
-  dialogTitle = `详情【${row.name}】`
+  dialogTitle = `Details【${row.name}】`
   getDetailByIdReq(row.id).then((resData) => {
     detailData = resData.data
     detailDialog = true
@@ -212,7 +211,6 @@ onMounted(() => {
 </script>
 
 <style scoped="scoped" lang="scss">
-/*详情*/
 .detail-container {
   flex-wrap: wrap;
 }

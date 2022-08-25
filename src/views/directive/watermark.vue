@@ -1,5 +1,5 @@
 <template>
-  <div v-watermark class="container">我是一个水印页面</div>
+  <div v-watermark class="container">Watermark</div>
 </template>
 
 <script setup></script>

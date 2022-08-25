@@ -7,22 +7,22 @@
     border
     @selection-change="handleSearchSelection"
   >
-    <el-table-column prop="tableName" label="表名" align="center" width="120">
+    <el-table-column prop="tableName" label="name" align="center" width="120">
       <template #default="{ row }">
         <el-input v-model="row.tableName" placeholder="tableName" />
       </template>
     </el-table-column>
-    <el-table-column prop="originField" label="字段名" align="center" width="120">
+    <el-table-column prop="originField" label=" field name" align="center" width="120">
       <template #default="{ row }">
-        <el-input v-model="row.originField" placeholder="字段名" />
+        <el-input v-model="row.originField" placeholder=" field name" />
       </template>
     </el-table-column>
-    <el-table-column prop="desc" label="字段描述" width="120">
+    <el-table-column prop="desc" label=" field describe" width="120">
       <template #default="{ row }">
-        <el-input v-model="row.desc" placeholder="字段描述" />
+        <el-input v-model="row.desc" placeholder=" field describe" />
       </template>
     </el-table-column>
-    <el-table-column prop="componentType" align="center" label="组件类型" width="400">
+    <el-table-column prop="componentType" align="center" label="component type" width="400">
       <template #default="{ row }">
         <el-radio-group v-model="row.componentType">
           <el-radio
@@ -36,12 +36,12 @@
         </el-radio-group>
       </template>
     </el-table-column>
-    <el-table-column prop="width" align="center" label="宽度" width="60">
+    <el-table-column prop="width" align="center" label="width" width="60">
       <template #default="{ row }">
-        <el-input v-model="row.width" placeholder="控件的宽度" />
+        <el-input v-model="row.width" placeholder="控件的width" />
       </template>
     </el-table-column>
-    <el-table-column prop="rule" align="center" label="校验规则" width="100">
+    <el-table-column prop="rule" align="center" label="Check rules" width="100">
       <template #default="{ row }">
         <el-radio-group v-model="row.rule">
           <el-radio v-for="(item, index) in ruleMapping" :key="index" :label="item.key">
@@ -50,7 +50,7 @@
         </el-radio-group>
       </template>
     </el-table-column>
-    <el-table-column align="center" prop="api" label="额外配置(select,cascader)" width="180">
+    <el-table-column align="center" prop="api" label="Additional configuration (select, cascader)" width="180">
       <template #default="{ row }">
         <div class="text-left">
           <el-input
@@ -84,7 +84,7 @@
             class="mt-4px"
             type="textarea"
             rows="2"
-            placeholder="数据枚举"
+            placeholder="data枚举"
           />
           <!--cascaderApi  -->
           <el-input
@@ -97,9 +97,9 @@
       </template>
     </el-table-column>
 
-    <el-table-column prop="width" align="center" label="操作" width="50">
+    <el-table-column prop="width" align="center" label="operate" width="50">
       <template #default="{ row, $index }">
-        <el-button text @click="deleteSearchItem(row, $index)">删除</el-button>
+        <el-button text @click="deleteSearchItem(row, $index)">delete</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -128,8 +128,8 @@ const setSearchTableData = (checkColumnArr) => {
       fItem.originField = fItem.columnName
       fItem.tbName = fItem.columnName
 
-      fItem.type = tbTypeMapping(fItem.dataType) //数据库和java中的类型做映射
-      fItem.componentType = componentTypeMapping(fItem.dataType, fItem.columnComment, fItem.columnName) //数据库和前端控件中的类型做映射
+      fItem.type = tbTypeMapping(fItem.dataType) //data库和java中的type做映射
+      fItem.componentType = componentTypeMapping(fItem.dataType, fItem.columnComment, fItem.columnName) //data库和前端控件中的type做映射
       fItem.rule = 'isNotNull'
       fItem.value = 'value'
       fItem.label = 'label'
@@ -147,7 +147,7 @@ const setSearchTableData = (checkColumnArr) => {
     }
   })
 }
-/*查询配置*/
+/*Search配置*/
 let currentChooseRow = $ref({})
 const chooseRowHandle = (row) => {
   currentChooseRow = row
@@ -157,11 +157,11 @@ let searchSelection = $ref([])
 const handleSearchSelection = (val) => {
   searchSelection = val
 }
-//删除和新增
+//delete和new
 const deleteSearchItem = (row, index) => {
   searchTableData.splice(index, 1)
 }
-//实现表格拖拽排序
+//实现格拖拽sort
 //拖拽
 import generatorHook from './hook/generatorHook'
 generatorHook(searchTableData, 'search-table-config')

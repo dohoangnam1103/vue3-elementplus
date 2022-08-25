@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>the recommend using  way of worker</div>
-    <div>计算结果：{{showPageRef}}</div>
+    <div>Calculation results：{{showPageRef}}</div>
   </div>
 </template>
 <script setup>
@@ -14,14 +14,14 @@
 const  workerCode=()=> {
   onmessage = (e) => {
     console.time("加载时间")
-    console.log("接收到主线程的信息"+e.data);
+    console.log("接收到主线程的information"+e.data);
     //处理复杂的js逻辑
     let countNum=0
     for (let i = 0; i < e.data; i++) {
       countNum=i+countNum
     }
-    //处理完毕返回主线程
-    console.log("子线程数据处理完毕返回主线程");
+    //处理完毕Back主线程
+    console.log("子线程data处理完毕Back主线程");
     console.timeEnd("加载时间")
     postMessage(countNum);
   }
@@ -42,7 +42,7 @@ const worker=changeFuncToUrl(workerCode);
 worker.postMessage(30000000)
 let  showPageRef=ref(null)
 worker.onmessage = (e) => {
-  console.log(`主进程收到了子进程发出的信息：${e.data}`);
+  console.log(`主进程收到了子进程发出的information：${e.data}`);
   showPageRef.value=e.data
   //停止线程（注:用完后一定要停止）
   worker.terminate();

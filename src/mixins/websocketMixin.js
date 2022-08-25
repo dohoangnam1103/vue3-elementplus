@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      /* webSocket推送的数据*/
+      /* webSocket推送的data*/
       webSocket: null,
       webSocketTaskData: {},
       showVehivlesTaskId: null,

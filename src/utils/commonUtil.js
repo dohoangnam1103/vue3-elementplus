@@ -1,7 +1,7 @@
 export default {
   /**
-   * 获取星期几
-   * @param date 日期字符串
+   * Obtain星期几
+   * @param date 日期Character符串
    * return {String}
    */
   dayFormat(date) {
@@ -25,7 +25,7 @@ export default {
 
   /**
    * 计算两个时间差
-   * @param {Data} startTime 开始时间（xxxx-xx-xx）
+   * @param {Data} startTime Start时间（xxxx-xx-xx）
    * @param {Data} endTime   结束时间（xxxx-xx-xx）
    * return xx年xx天  || xx天xx小时 || xx小时xx分
    */
@@ -33,7 +33,7 @@ export default {
     // 将xxxx-xx-xx的时间格式，转换为 xxxx/xx/xx的格式
     startTime = startTime.replace(/\-/g, '/')
     endTime = endTime.replace(/\-/g, '/')
-    let sTime = new Date(startTime) // 开始时间
+    let sTime = new Date(startTime) // Start时间
     let eTime = new Date(endTime) // 结束时间
     let timeOff = eTime - sTime // 相差时间戳（毫秒数）
     let timeMinute = 1000 * 60
@@ -55,7 +55,7 @@ export default {
     // dateTimeFormatter是第一个时间类的方法
     return this.dateTimeFormatter(minStartTime, 'yyyy-MM-dd')
   },
-  /* 获取两个日期相差天数
+  /* Obtain两个日期相差天数
    * */
   dateDiff(sDate1, sDate2) {
     let arrDate, objDate1, objDate2, iDays
@@ -73,7 +73,7 @@ export default {
     return '星期' + '日一二三四五六'.charAt(new Date().getDay())
     // this.showDate=this.$momentMini(new Date()).format('YYYY年MM月DD日，')+str
   },
-  /* 表单验证*/
+  /* 单验证*/
   // 匹配手机
   mobilePhone(str) {
     const reg = /^0?1[0-9]{10}$/
@@ -138,11 +138,11 @@ export default {
   sub: function (arg1, arg2) {
     return this.add(arg1, -Number(arg2), arguments[2])
   },
-  /* 常用数组操作*/
+  /* 常用数组operate*/
   /*
-   * 删除数组中的指定元素
+   * delete数组中的指定元素
    * arrItem 数组的index下标
-   * return 删除后的数组
+   * return delete后的数组
    * */
   deleteArrItem(arr, arrItem) {
     arr.splice(
@@ -157,7 +157,7 @@ export default {
    * */
   arrToRepeat(arr) {
     return arr.filter((ele, index, thisArr) => {
-      // 因为indexOf返回元素出现的第一个index位置,如果有重复的话那么他的位置永远是第一次出现的index,这就与他本身的index不相符,则删掉.
+      // 因为indexOfBack元素出现的第一个index位置,如果有重复的话那么他的位置永远是第一次出现的index,这就与他本身的index不相符,则删掉.
       return thisArr.indexOf(ele) === index
     })
   },
@@ -170,11 +170,11 @@ export default {
     return [...new Set(seriesArr)]
   },
   /*
-   * 根据arrObj 删除arrObj2   根据arrObj objKey查找删除
+   * 根据arrObj deletearrObj2   根据arrObj objKey查找delete
    * arrObj: 数组对象
-   * arrObj2: 要被删除的对象
-   * objKey： arrObj中对象的某一个key名称
-   * return: arrObj2删除过后的数组
+   * arrObj2: 要被delete的对象
+   * objKey： arrObj中对象的某一个keyname称
+   * return: arrObj2delete过后的数组
    * */
   byArrObjDeleteArrObj2(arrObj, arrObj2, objKey) {
     arrObj
@@ -190,10 +190,10 @@ export default {
     return arrObj2
   },
   /*
-   * 删除arrObj某一项 根据objKey中的key的值等于value的值
+   * deletearrObj某一项 根据objKey中的key的值等于value的值
    * arrObj: 数组对象
-   * objKey：arrObj中对象的某一个key名称
-   * return: arrObj删除过后的数组
+   * objKey：arrObj中对象的某一个keyname称
+   * return: arrObjdelete过后的数组
    * */
   deleteArrObjByKey(arrObj, objKey, value) {
     //foreach splice
@@ -207,7 +207,7 @@ export default {
   /*
    * 查找arrObj某一项 根据objKey中的值
    * arrObj: 数组对象
-   * objKey：arrObj中对象的某一个key名称
+   * objKey：arrObj中对象的某一个keyname称
    * return: arrObj查找 过后的数组
    * */
   findArrObjByKey(arrObj, objKey, value) {
@@ -216,9 +216,9 @@ export default {
   /*
    * 根据arrObj 筛选arrObj2   根据arrObj objKey值查找
    * arrObj: 数组对象
-   * arrObj2: 要被删除的对象
-   * objKey： arrObj中对象的某一个key名称
-   * return: arrObj2删除过后的数组
+   * arrObj2: 要被delete的对象
+   * objKey： arrObj中对象的某一个keyname称
+   * return: arrObj2delete过后的数组
    * */
   byArrObjFindArrObj2(arrObj, arrObj2, objKey, value) {
     let arrObj3 = []
@@ -247,7 +247,7 @@ export default {
       let ai = arr[i]
       // 将需要筛选的属性的值作为新对象的键，并且判断是否已经存在
       if (!map[ai[group_key]]) {
-        // 不存在的话就在map对象中创建一个属性的值作为键名，键值为空数组的新对象，并且把arr[i]放入
+        // 不存在的话就在map对象中创建一个属性的值作为键name，键值为空数组的新对象，并且把arr[i]放入
         map[ai[group_key]] = [ai]
       } else {
         // 如果已经存在就直接把arr[i]放入

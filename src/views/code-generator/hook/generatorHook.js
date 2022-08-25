@@ -7,7 +7,7 @@ export default function (importData, className) {
     })
   })
   const rowDrop = () => {
-    // 获取到element-ui封装的表格标签
+    // Obtain到element-ui封装的格标签
     const tbody = document.querySelector(` .${className} tbody`)
     sortableImp.create(tbody, {
       animation: 180,

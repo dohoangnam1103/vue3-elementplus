@@ -2,13 +2,13 @@
   <div class="CodeGenerator scroll-y pb-5">
     <div class="mt-2 mb-2">
       <el-alert
-        title="新一代的低代码生成平台，提供数据源能力，根据数据库字段自动生成基于vue3-admin-plus和micro-service-plus的模版。
-      可以使用默认模版和自定义模版生成，经过测试可以为企业提升40%左右的开发效率"
+        title="A new generation of low-code generation platform that provides data source capabilities and automatically generates templates based on vue3-admin-plus and micro-service-plus according to database fields.
+       It can be generated using default templates and custom templates. After testing, it can improve the development efficiency of enterprises by about 40%."
         type="warning"
       />
     </div>
-    <!--项目和作者信息配置-->
-    <div class="mb-1">项目和作者信息配置</div>
+    <!--Project and author information configuration-->
+    <div class="mb-1">Project and author information configuration</div>
     <el-form ref="refForm" label-width="150px" :inline="true" :model="poaForm" :rules="formRules" class="pr-50px">
       <el-form-item label="author" prop="author" :rules="formRules.isNotNull" label-position="left">
         <el-input v-model="poaForm.author" placeholder="author" />
@@ -23,8 +23,8 @@
         <el-input v-model="poaForm.modalTitle" placeholder="modalTitle" />
       </el-form-item>
     </el-form>
-    <!-- 前端页面参数配置-->
-    <div class="mt-3 mb-1">前端页面参数配置</div>
+    <!-- Front-end page parameter configuration-->
+    <div class="mt-3 mb-1">Front-end page parameter configuration</div>
     <el-form ref="refCcForm" label-width="150px" :inline="true" :model="ccForm" :rules="formRules" class="pr-5">
       <el-form-item label="upFileApi" prop="upFileApi" :rules="formRules.isNotNull" label-position="left">
         <el-input v-model="ccForm.upFileApi" placeholder="upFileApi" />
@@ -51,19 +51,19 @@
       <!--        <el-switch v-model="ccForm.isTableMulChoose" inline-prompt active-color="#13ce66" inactive-color="#ff4949" />-->
       <!--      </el-form-item>-->
     </el-form>
-    <!-- 获取库和表信息 -->
-    <div class="mb-1 mt-3">获取库和表信息(如想使用，请先提供自己的数据源接口)</div>
+    <!-- Obtain库和information -->
+    <div class="mb-1 mt-3">Get library and table information (if you want to use it, please provide your own data source interface first)</div>
     <div class="rowSS">
       <el-input v-model="dataBaseUrl" class="w-500px" placeholder="dataBaseUrl" />
-      <el-button type="primary" @click="searchDataBase">查询表</el-button>
+      <el-button type="primary" @click="searchDataBase">Search</el-button>
     </div>
-    <div class="mt-3 mb-1">请选择表(支持多表)</div>
+    <div class="mt-3 mb-1">Please select (multiple support)</div>
     <el-radio-group v-model="dbRadio" @click.stop>
       <el-radio v-for="(item, index) in dbData" :key="index" :label="item.tableName" @change="dbRadioClick(item)">
         {{ item.tableName }}({{ item.tableComment }})
       </el-radio>
     </el-radio-group>
-    <div class="mt-3 mb-1">选中的表</div>
+    <div class="mt-3 mb-1">Chosen</div>
     <el-radio-group v-model="chooseDbRadio">
       <el-radio
         v-for="(item, index) in chooseDbArr"
@@ -72,22 +72,22 @@
         @click="dbChooseRadioClick(item)"
       >
         {{ item.tableName }}({{ item.tableComment }})
-        <el-button text @click="deleteChooseRadio(index)">删除</el-button>
+        <el-button text @click="deleteChooseRadio(index)">delete</el-button>
       </el-radio>
     </el-radio-group>
-    <!-- 表信息-->
-    <div class="mb-1 mt-3">表信息</div>
+    <!-- information-->
+    <div class="mb-1 mt-3">information</div>
     <div class="rowSS mt-1">
       <el-input v-model="dbTableUrl" class="w-500px" placeholder="dbTableUrl" />
       <el-input v-model="tbName" class="w-150px" placeholder="tbName" />
-      <el-button :disabled="!tbName" type="primary" @click="searchDbTable">查询表字段</el-button>
+      <el-button :disabled="!tbName" type="primary" @click="searchDbTable">Search field </el-button>
     </div>
 
-    <!--  多表关系配置(用于多表查询)  -->
-    <div class="mt-3 mb-1">多表字段关系配置</div>
+    <!--  多关系配置(用于多Search)  -->
+    <div class="mt-3 mb-1">Multi-field relationship configuration</div>
     <div class="mb-1 rowSS">
-      <el-input v-model="multiTableName" placeholder="多表实体类名" class="w-150px mr-2" />
-      <el-input v-model="multiTableDesc" placeholder="多表相关注释" class="w-150px" />
+      <el-input v-model="multiTableName" placeholder="Multiple entity class name" class="w-150px mr-2" />
+      <el-input v-model="multiTableDesc" placeholder="Multiple related notes" class="w-150px" />
     </div>
     <div v-for="(item, index) in multiTableConfig" :key="index" class="rowSC">
       <div class="mr-1">{{ item.originTableName }}：</div>
@@ -103,10 +103,10 @@
       </el-radio-group>
       <ElSvgIcon class="ml-1" name="CircleClose" :size="14" style="cursor: pointer" @click="deleteMultiTable(index)" />
     </div>
-    <!--  显示表字段信息（可多选） -->
+    <!--  显示 field information（可多选） -->
     <div class="mb-1 mt-3 rowSS">
-      <div>表字段（点击选择）</div>
-      <el-button class="ml-1" type="primary" @click="checkAllColumn">全选</el-button>
+      <div> field （Click to select）</div>
+      <el-button class="ml-1" type="primary" @click="checkAllColumn">select all</el-button>
     </div>
     <div class="mt-1">
       <el-button
@@ -120,10 +120,10 @@
         {{ item.columnName }}({{ item.columnComment }})
       </el-button>
 
-      <!-- 选中的字段-->
+      <!-- Chosen field -->
       <div class="mt-3 mb-1">
-        <span>选中的字段</span>
-        <el-button type="danger" class="ml-1" @click="clearAllColumn">清空</el-button>
+        <span>Chosen field </span>
+        <el-button type="danger" class="ml-1" @click="clearAllColumn">empty</el-button>
       </div>
       <div class="rowSS flex-wrap">
         <div v-for="(item, index) in checkColumnArr" :key="index" class="rowSC mr-2 mt-1">
@@ -132,28 +132,28 @@
         </div>
       </div>
       <div v-if="checkColumnArr.length" class="mt-2">
-        <el-button type="primary" @click="generatorToSearch">生成到查询</el-button>
-        <el-button type="primary" @click="generatorToTable">生成到表格</el-button>
-        <el-button type="primary" @click="generatorToForm">生成到表单</el-button>
+        <el-button type="primary" @click="generatorToSearch">生成到Search</el-button>
+        <el-button type="primary" @click="generatorToTable">生成到格</el-button>
+        <el-button type="primary" @click="generatorToForm">生成到单</el-button>
       </div>
     </div>
 
-    <!--  查询配置  -->
-    <div class="mt-3 mb-1">查询配置(支持拖拽排序)</div>
+    <!--  Search配置  -->
+    <div class="mt-3 mb-1">SearchConfiguration (support drag and drop sort)</div>
     <SearchTableConfig ref="refSearchTableConfig" />
-    <!--  表格配置  -->
-    <div class="mt-3 mb-1">表格配置</div>
+    <!--  grid configuration  -->
+    <div class="mt-3 mb-1">grid configuration</div>
     <ListTableConfig ref="refListTableConfig" />
-    <!--  提交from表单配置  -->
-    <div class="mt-3 mb-1">提交from表单配置</div>
+    <!--  Submit from single configuration  -->
+    <div class="mt-3 mb-1">Submit from single configuration</div>
     <FormTableConfig ref="refFormTableConfig" />
 
-    <!-- 已定义模版生成-->
-    <div class="mt-3 mb-1">已定义模版生成</div>
+    <!-- Defined template generation-->
+    <div class="mt-3 mb-1">Defined template generation</div>
     <div class="rowSS">
-      <el-button type="success" @click="generatorFrontTempZip">生成前端模版(element-plus)</el-button>
-      <el-button type="success" @click="generatorBackTempZip">生成后端模版(mybatis-plus支持多表)</el-button>
-      <el-button type="success" @click="generatorFrontBackTempZip">生成前后端模版(element-plus&mybatis-plus)</el-button>
+      <el-button type="success" @click="generatorFrontTempZip">Generate front-end template (element-plus)</el-button>
+      <el-button type="success" @click="generatorBackTempZip">Generate a backend template (mybatis-plus supports many)</el-button>
+      <el-button type="success" @click="generatorFrontBackTempZip">Generate front-end and back-end templates (element-plus mybatis-plus)</el-button>
     </div>
     <CustomUploadVms ref="refCustomUploadVms" />
   </div>
@@ -172,17 +172,17 @@ import CustomUploadVms from './CustomUploadVms.vue'
 const { currentTime } = useCommon()
 const { formRules, elMessage } = useElement()
 import commonUtil from '@/utils/commonUtil'
-/*项目和作者信息配置*/
+/*Project and author information configuration*/
 const poaForm = reactive({
-  author: '熊猫哥',
+  author: 'Brother Panda',
   packageName: 'top.kuanghua.integrationfront',
   serviceName: 'integration-front',
   dataTime: '',
-  modalTitle: '我是modal的title',
+  modalTitle: 'I am the title of the modal',
   isMultiTable: false
 })
 poaForm.dataTime = currentTime
-/*前端页面参数配置*/
+/*Front-end page parameter configuration*/
 const ccForm = reactive({
   upFileApi: '/basis-func/upload/file',
   isAdd: true,
@@ -193,7 +193,7 @@ const ccForm = reactive({
   isDetail: true,
   isTableMulChoose: true
 })
-/*获取库和表信息*/
+/*Obtain库和information*/
 //库
 let dataBaseUrl = $ref(
   'https://github.jzfai.top/micro-service-api/basis-func/dataBase/getAllDatabaseOrTable/micro-service-plus'
@@ -204,17 +204,17 @@ let chooseDbRadio = $ref(null)
 let dbData = $ref([])
 const dbRadioClick = (item) => {
   if (chooseDbArr.length >= 3) {
-    elMessage('最多支持3个选择', 'warning')
+    elMessage('Support up to 3 choices', 'warning')
     return
   }
   if (commonUtil.findArrObjByKey(chooseDbArr, 'tableName', item.tableName)) {
-    elMessage(`${item.tableName}已存在`, 'warning')
+    elMessage(`${item.tableName} existed`, 'warning')
     return
   }
   chooseDbArr.push(item)
 }
 
-//保存tb的信息
+//保存tb的information
 let currentTableInfo = $ref({})
 const dbChooseRadioClick = (item) => {
   tbName = item.tableName
@@ -241,7 +241,7 @@ const searchDataBase = () => {
     dbData = data
   })
 }
-//表
+//
 let dbTableUrl = $ref(dataBaseUrl)
 let tbName = $ref('')
 let tbData = $ref([])
@@ -265,7 +265,7 @@ const searchDbTable = () => {
         priKeyItemArr.push(fItem)
       }
     })
-    //插入表信息
+    //插入information
     const firstData = data[0]
     const priKeyArrFirst = priKeyArr[0]
     const priKeyArrLast = priKeyArr[priKeyArr.length - 1]
@@ -307,13 +307,13 @@ const searchDbTable = () => {
     tbData = data
   })
 }
-//多表关系配置
+//多关系配置
 let multiTableName = $ref(null)
-let multiTableDesc = $ref('多表中实体类的注释')
+let multiTableDesc = $ref('Annotation for multiple entity classes')
 const pkaRadioClick = (item, pkaItem) => {
   item.associationKey = changeDashToCase(pkaItem)
 }
-//全选
+//select all
 const checkAllColumn = () => {
   checkColumnArr = JSON.parse(JSON.stringify(tbData))
 }
@@ -330,7 +330,7 @@ const deleteColumn = (dIndex) => {
   checkColumnArr.splice(dIndex, 1)
 }
 let checkColumnArr = $ref([])
-/*显示表字段信息（可多选）*/
+/*显示 field information（可多选）*/
 //Search
 import SearchTableConfig from './SearchTableConfig.vue'
 const refSearchTableConfig = $ref(null)
@@ -360,7 +360,7 @@ const generatorSubData = () => {
     const formTableConfig = refFormTableConfig.getFormTableData()
     const formTableGroup = commonUtil.arrGroupByKey(searchTableConfig, 'tableName')
 
-    //多表数据处理
+    //多data处理
     multiTableConfig.forEach((fItem) => {
       fItem.tableQueryArr = searchTableGroup[fItem.originTableName]
       fItem.tableShowArr = listTableGroup[fItem.originTableName]
@@ -426,7 +426,7 @@ const generatorSubData = () => {
 /**
  * 生成前端模版
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/26 14:40
  */
 const generatorFrontTempZip = async () => {
@@ -451,7 +451,7 @@ const generatorFrontTempZip = async () => {
 /**
  * 生成前端模版
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/26 14:40
  */
 const generatorBackTempZip = async () => {
@@ -476,7 +476,7 @@ const generatorBackTempZip = async () => {
 /**
  * 生成前后的模版
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/26 14:40
  */
 const generatorFrontBackTempZip = async () => {

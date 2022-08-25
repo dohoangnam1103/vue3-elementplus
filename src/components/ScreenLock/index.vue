@@ -6,10 +6,10 @@
     <div v-if="open" class="screen-locker">
       <div class="screen-avatar">
         <el-avatar round :size="128" src="https://github.jzfai.top/file/images/nav-right-logo.gif" />
-        <div class="screen-nickname">Vue3 Admin Plus</div>
+        <div class="screen-nickname">SL - Admin</div>
       </div>
       <div ref="slider" class="screen-slider">
-        <div class="screen-locker-placeholder">滑动解锁</div>
+        <div class="screen-locker-placeholder">Slide to unlock</div>
         <div ref="sliderButton" class="screen-slider-button" @mousedown="onMousedown">
           <el-icon :size="25">
             <icon />
@@ -71,7 +71,7 @@ const onMouseup = () => {
   document.removeEventListener('mouseup', onMouseup)
 
   if (!isTrigger.value) {
-    // 恢复原始状态
+    // 恢复原始state
     distance = 0
     maxDistance = 0
     minDistance = 0

@@ -3,8 +3,8 @@
     <el-card class="box-card">
       <template #header>
         <div class="card-header">
-          <span>关系图谱</span>
-          <el-button class="button" text @click="restart">刷新</el-button>
+          <span>Relationship graph</span>
+          <el-button class="button" text @click="restart">refresh</el-button>
         </div>
       </template>
       <div ref="boxRef" class="contain">
@@ -13,13 +13,13 @@
         <!--        提示-->
         <transition name="fade">
           <div v-show="state.showTip" class="tip" :style="{ left: state.tip.left, top: state.tip.top }">
-            <span>名称：{{ state.tip.content.id }}</span>
-            <span>类型：{{ state.tip.content.type || '无' }}</span>
+            <span>name称：{{ state.tip.content.id }}</span>
+            <span>type：{{ state.tip.content.type || '无' }}</span>
           </div>
         </transition>
       </div>
     </el-card>
-    <!--    节点详情-->
+    <!--    节点Details-->
     <NodeDetail :detail="state" :node-type="nodeType"></NodeDetail>
   </div>
 </template>
@@ -36,7 +36,7 @@ import NodeDetail from '@/views/use-example/d3/component/NodeDetail.vue'
 export default {
   components: { NodeDetail },
   setup(props, context) {
-    // 定义基本数据
+    // 定义基本data
     const state = reactive({
       types: 'CLNode',
       drawer: false,
@@ -53,8 +53,8 @@ export default {
     // 定义refs
     const boxRef = ref(null)
 
-    const { nodeType } = useData(state) // 导入详情模块
-    const { chart } = useD3() // 导入d3模块
+    const { nodeType } = useData(state) // importDetails模块
+    const { chart } = useD3() // importd3模块
 
     // 容器样式
     const style = reactive({
@@ -71,7 +71,7 @@ export default {
       }, 50)
     })
 
-    // 获取容器宽度
+    // Obtain容器width
     const getWidth = () => {
       if (boxRef.value) {
         let width = boxRef.value.clientWidth
@@ -80,7 +80,7 @@ export default {
       }
     }
 
-    // 定义d3相关的对象，用于后续操作
+    // 定义d3相关的对象，用于后续operate
     let obj = reactive({})
     // 初始化d3
     const init = () => {
@@ -90,7 +90,7 @@ export default {
         height: state.height,
         data,
         nodeClick: function () {
-          // 节点点击事件
+          // 节点click事件
           const data = d3.select(this).datum()
           state.data = data
           state.types = data.type
@@ -113,7 +113,7 @@ export default {
       })
     }
 
-    // 刷新force
+    // refreshforce
     const restart = () => {
       obj.simulation.alpha(1).restart()
     }

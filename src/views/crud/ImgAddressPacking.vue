@@ -2,16 +2,16 @@
   <div class="scroll-y">
     <div class="mt-2 mb-2">image upload and Add watermark</div>
     <div class="imgUpContainer rowSS">
-      <!--图片列表-->
+      <!--图片列-->
       <div class="imgShowList rowSS">
         <div v-for="(item, index) in imageList" :key="index" class="imgItem">
-          <!--右上角删除按钮-->
+          <!--右上角delete按钮-->
           <el-icon class="rightDel" @click="deleteImage(index)"><CloseBold /></el-icon>
           <img class="imgStyle" :src="item.url" />
           <div class="imageName">{{ item.name }}</div>
         </div>
       </div>
-      <!--图片上传-->
+      <!--图片upload-->
       <div class="packingImageContainer columnCC">
         <el-icon class="packingIconStyle"><Plus /></el-icon>
         <input
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="mt-20px mb-10px">Provinces and cities packing</div>
-    <el-cascader v-model="addressArr" :options="regionData" class="w-200px" @change="casHandle"></el-cascader>
+    <!-- <el-cascader v-model="addressArr" :options="regionData" class="w-200px" @change="casHandle"></el-cascader> -->
 
     <div class="mt-20px mb-10px">axios req cancel test(you need setting: Network->slow 3G To Test)</div>
     <el-button type="primary" @click="testAxiosCancelReq">emit req</el-button>
@@ -44,7 +44,7 @@ let imageList = ref([])
 const fileOnChange = () => {
   let length = imageList.value.length
   if (length >= 5) {
-    ElMessage({ message: '文件上传数不能大于2个', type: 'warning' })
+    ElMessage({ message: 'The number of file uploads cannot be greater than 2', type: 'warning' })
     return
   }
   let fileObj = refSettingFile.value.files
@@ -146,7 +146,7 @@ $borderRadius: 6px;
     }
   }
 }
-//图片上传
+//图片upload
 .packingImageContainer {
   position: relative;
   background-color: #fbfdff;

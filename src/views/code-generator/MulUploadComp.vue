@@ -1,15 +1,15 @@
 <template>
   <div class="imgUpContainer rowSS">
-    <!--图片列表-->
+    <!--图片列-->
     <div class="imgShowList rowSS flex-wrap">
       <div v-for="(item, index) in uploadFileList" :key="index" class="imgItem">
-        <!--右上角删除按钮-->
+        <!--右上角delete按钮-->
         <el-icon class="imgStyle"><Document class="imgStyle" /></el-icon>
         <el-icon class="rightDel" @click="deleteFile(index)"><CloseBold /></el-icon>
         <div class="imageName">{{ item.name }}</div>
       </div>
     </div>
-    <!--图片上传-->
+    <!--图片upload-->
     <div class="rowSE">
       <div class="packingImageContainer columnCC">
         <el-icon class="packingIconStyle"><Plus /></el-icon>
@@ -23,7 +23,7 @@
         />
       </div>
       <el-button type="primary" class="ml-20px" :disabled="!uploadFileList.length" @click="uploadTheVmsTemp">
-        上传
+        upload
       </el-button>
     </div>
   </div>
@@ -91,7 +91,7 @@ $borderRadius: 6px;
     }
   }
 }
-//图片上传
+//图片upload
 .packingImageContainer {
   position: relative;
   background-color: #fbfdff;

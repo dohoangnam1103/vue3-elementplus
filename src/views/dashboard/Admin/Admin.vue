@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-editor-container">
-    <GithubCorner class="github-corner" />
+    <!-- <GithubCorner class="github-corner" /> -->
     <PanelGroup @handleSetLineChartData="handleSetLineChartData" />
     <el-row style="background: #fff; padding: 16px 16px 0; margin-bottom: 32px">
       <LineChart :chart-data="lineChartData ?? {}" />

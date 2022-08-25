@@ -43,7 +43,7 @@ const destroy = () => {
     screenfull.off('change', change)
   }
 }
-//导出属性到页面中使用
+//export属性到页面中使用
 let { isFullscreen } = toRefs(state)
 </script>
 

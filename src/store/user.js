@@ -61,7 +61,6 @@ export const useUserStore = defineStore('user', {
             if (!data) {
               return reject('Verification failed, please Login again.')
             }
-            //此处模拟数据
             const rolesArr = localStorage.getItem('roles')
             if (rolesArr) {
               data.roles = JSON.parse(rolesArr)

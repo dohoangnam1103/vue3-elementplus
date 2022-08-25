@@ -14,7 +14,7 @@
           <span class="svg-container">
             <ElSvgIcon name="User" :size="14" />
           </span>
-          <el-input v-model="formInline.username" placeholder="用户名(admin)" />
+          <el-input v-model="formInline.username" placeholder="用户name(admin)" />
           <!--占位-->
         </el-form-item>
         <el-form-item prop="password" :rules="formRules.isNotNull">
@@ -43,7 +43,7 @@
           round
           @click.prevent="handleLogin"
         >
-          登录
+          Login
         </el-button>
       </el-form>
     </div>
@@ -114,7 +114,7 @@ let loginReq = () => {
   userStore
     .login(formInline)
     .then(() => {
-      ElMessage({ message: '登录成功', type: 'success' })
+      ElMessage({ message: 'login successful', type: 'success' })
       router.push({ path: state.redirect || '/', query: state.otherQuery })
     })
     .catch((res) => {
@@ -245,7 +245,7 @@ $light_gray: #eee;
   transform: translateY(-50%);
 }
 
-//错误提示信息
+//错误提示information
 .tip-message {
   color: #e4393c;
   height: 30px;

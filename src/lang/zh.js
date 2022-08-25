@@ -14,22 +14,22 @@ export default {
     'Menu1-2-2': '菜单 1-2-2',
     'Menu1-3': '菜单 1-3',
     menu2: '菜单 2',
-    Table: '表格',
-    exportExcel: '导出Excel',
-    importExcel: '导入Excel',
+    Table: '格',
+    exportExcel: 'exportExcel',
+    importExcel: 'importExcel',
     CodeGenerator: '低代码平台',
     ExternalLink: '外链',
 
-    Charts: '图表',
-    'Keyboard Chart': '键盘图表',
+    Charts: '图',
+    'Keyboard Chart': '键盘图',
     'Line Chart': '折线图',
-    'Mix Chart': '混合图表',
+    'Mix Chart': '混合图',
     'Echarts Demo': '综合实例',
 
     CRUD: '增删改查',
     'CRUD-Demo': '增删改查例子',
-    'Import Export': '导入导出文件',
-    'ImgAdd Pack': '图片上传',
+    'Import Export': 'importexport文件',
+    'ImgAdd Pack': '图片upload',
     'Writing Demo': '写法案例',
     'Hook-Demo': 'hooks例子',
     'Vuex-Demo': 'Vuex例子',
@@ -44,7 +44,7 @@ export default {
     Tinymce: 'Tinymce富文本',
     'I18n-Demo': 'i18n例子',
     dragPane: '拖拽面板',
-    countTo: '数字动画',
+    countTo: '数Character动画',
     Permission: '权限',
     'Role Index': '角色权限',
     'Page Permission': '角色权限页面',
@@ -74,13 +74,13 @@ export default {
     github: 'Github 地址'
   },
   permission: {
-    addRole: '新增角色',
-    editPermission: '编辑权限',
+    addRole: 'new角色',
+    editPermission: 'Edit权限',
     roles: '你的权限',
     switchRoles: '切换权限',
     tips:
       '在某些情况下，不适合使用 v-permission。例如：Element-UI 的 el-tab 或 el-table-column 以及其它动态渲染 dom 的场景。你只能通过手动设置 v-if 来实现。',
-    delete: '删除',
+    delete: 'delete',
     confirm: '确定',
     cancel: '取消'
   },
@@ -95,56 +95,56 @@ export default {
     dropzoneTips:
       '由于我司业务有特殊需求，而且要传七牛 所以没用第三方，选择了自己封装。代码非常的简单，具体代码你可以在这里看到 @/components/Dropzone',
     stickyTips: '当页面滚动到预设的位置会吸附在顶部',
-    backToTopTips1: '页面滚动到指定位置会在右下角出现返回顶部按钮',
+    backToTopTips1: '页面滚动到指定位置会在右下角出现Back顶部按钮',
     backToTopTips2:
-      '可自定义按钮的样式、show/hide、出现的高度、返回的位置 如需文字提示，可在外部使用Element的el-tooltip元素',
+      '可自定义按钮的样式、show/hide、出现的高度、Back的位置 如需文Character提示，可在外部使用Element的el-tooltip元素',
     imageUploadTips:
       '由于我在使用时它只有vue@1版本，而且和mockjs不兼容，所以自己改造了一下，如果大家要使用的话，优先还是使用官方版本。'
   },
   table: {
-    dynamicTips1: '固定表头, 按照表头顺序排序',
-    dynamicTips2: '不固定表头, 按照点击顺序排序',
+    dynamicTips1: '固定头, 按照头顺序sort',
+    dynamicTips2: '不固定头, 按照click顺序sort',
     dragTips1: '默认顺序',
     dragTips2: '拖拽后顺序',
     title: '标题',
     importance: '重要性',
-    type: '类型',
+    type: 'type',
     remark: '点评',
-    search: '搜索',
+    search: 'search',
     add: '添加',
-    export: '导出',
+    export: 'export',
     reviewer: '审核人',
     id: '序号',
     date: '时间',
     author: '作者',
     readings: '阅读数',
-    status: '状态',
-    actions: '操作',
-    edit: '编辑',
+    status: 'state',
+    actions: 'operate',
+    edit: 'Edit',
     publish: '发布',
     draft: '草稿',
-    delete: '删除',
+    delete: 'delete',
     cancel: '取 消',
-    confirm: '确 定'
+    confirm: 'Ok'
   },
   example: {
     warning:
-      '创建和编辑页面是不能被 keep-alive 缓存的，因为keep-alive 的 include 目前不支持根据路由来缓存，所以目前都是基于 component name 来进行缓存的。如果你想类似的实现缓存效果，可以使用 localStorage 等浏览器缓存方案。或者不要使用 keep-alive 的 include，直接缓存所有页面。详情见'
+      '创建和Edit页面是不能被 keep-alive 缓存的，因为keep-alive 的 include 目前不支持根据路由来缓存，所以目前都是基于 component name 来进行缓存的。如果你想类似的实现缓存效果，可以使用 localStorage 等浏览器缓存方案。或者不要使用 keep-alive 的 include，直接缓存所有页面。Details见'
   },
   errorLog: {
-    tips: '请点击右上角bug小图标',
+    tips: '请click右上角bug小图标',
     description:
-      '现在的管理后台基本都是spa的形式了，它增强了用户体验，但同时也会增加页面出问题的可能性，可能一个小小的疏忽就导致整个页面的死锁。好在 Vue 官网提供了一个方法来捕获处理异常，你可以在其中进行错误处理或者异常上报。',
+      '现在的管理后台基本都是spa的形式了，它增强了用户体验，但同时也会Increase页面出问题的可能性，可能一个小小的疏忽就导致整个页面的死锁。好在 Vue 官网提供了一个方法来捕获处理异常，你可以在其中进行错误处理或者异常上报。',
     documentation: '文档介绍'
   },
   excel: {
-    export: '导出',
-    selectedExport: '导出已选择项',
-    placeholder: '请输入文件名(默认excel-list)'
+    export: 'export',
+    selectedExport: 'export已选择项',
+    placeholder: '请输入文件name(默认excel-list)'
   },
   zip: {
-    export: '导出',
-    placeholder: '请输入文件名(默认file)'
+    export: 'export',
+    placeholder: '请输入文件name(默认file)'
   },
   pdf: {
     tips: '这里使用   window.print() 来实现下载pdf的功能'
@@ -155,7 +155,7 @@ export default {
     tips: 'Tips: 它区别于 navbar 上的 theme-pick, 是两种不同的换肤方法，各自有不同的应用场景，具体请参考文档。'
   },
   tagsView: {
-    refresh: '刷新',
+    refresh: 'refresh',
     close: '关闭',
     closeOthers: '关闭其它',
     closeAll: '关闭所有'

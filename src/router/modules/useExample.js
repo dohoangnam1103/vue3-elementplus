@@ -42,18 +42,18 @@ const useExampleRouter = {
       component: () => import('@/views/use-example/countTo/countTo.vue'),
       meta: { title: 'countTo', icon: 'nested' }
     },
-    {
-      path: 'tinymce-example',
-      name: 'tinymce-example',
-      component: () => import('@/views/use-example/tinymce-example/TinymceExample.vue'),
-      meta: { title: 'Tinymce', icon: 'nested' }
-    },
-    {
-      path: 'vxe-table',
-      name: 'vxe-table',
-      component: () => import('@/views/use-example/vxeTable/vxeTable.vue'),
-      meta: { title: 'vxe-table', icon: 'nested' }
-    },
+    // {
+    //   path: 'tinymce-example',
+    //   name: 'tinymce-example',
+    //   component: () => import('@/views/use-example/tinymce-example/TinymceExample.vue'),
+    //   meta: { title: 'Tinymce', icon: 'nested' }
+    // },
+    // {
+    //   path: 'vxe-table',
+    //   name: 'vxe-table',
+    //   component: () => import('@/views/use-example/vxeTable/vxeTable.vue'),
+    //   meta: { title: 'vxe-table', icon: 'nested' }
+    // },
   ]
 }
 

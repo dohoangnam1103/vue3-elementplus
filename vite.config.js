@@ -25,7 +25,7 @@ import mkcert from 'vite-plugin-mkcert'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
 //  import image
-//  直接使用 <img :src="Logo" />
+//  Use directly <img :src="Logo" />
 // import ViteImages from 'vite-plugin-vue-images'
 import setting from './src/settings'
 // import { loadEnv } from 'vite'
@@ -39,7 +39,7 @@ let commitHash = ''
 try {
   commitHash = child_process.execSync('git rev-parse --short HEAD').toString().trim()
 } catch (e) {
-  console.log('.git仓库为空或者未安装git')
+  console.log('The git repository is empty or git is not installed')
 }
 
 import { optimizeDepsArr } from './optimize-include'
@@ -52,6 +52,7 @@ export default ({ command, mode }) => {
   return {
     //detail to look https://vitejs.cn/config/#base
     base: setting.viteBasePath,
+    // publicDir: 'test',
     //define global var
     define: {
       //fix "path" module issue
@@ -64,13 +65,13 @@ export default ({ command, mode }) => {
     },
     clearScreen: false,
     server: {
-      hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
-      // 服务配置
-      port: 5006, // 类型： number 指定服务器端口;
-      open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
-      cors: true, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
+      hmr: { overlay: false }, // disable or configure HMR connect set up server.hmr.overlay for false Server error mask layer can be disabled
+      // Service configuration
+      port: 5006, // 
+      open: true, // type： boolean | string Automatically open the application in the browser when the server starts;
+      cors: true, // type： boolean | CorsOptions Configure CORS for the development server. Enabled by default and allows any origin
       host: true,
-      https: false //whether open https 开启https首次运行比较慢 且有个输入密码过程
+      https: false //whether open https Opening https for the first time is slow and there is a password input process
       //proxy look for https://vitejs.cn/config/#server-proxy
       // proxy: {
       //   '/api': {
@@ -81,7 +82,7 @@ export default ({ command, mode }) => {
       // }
     },
     preview: {
-      port: 5006,
+      port: 5007,
       host: true,
       strictPort: true
     },
@@ -158,7 +159,7 @@ export default ({ command, mode }) => {
     build: {
       minify: 'terser',
       brotliSize: false,
-      // 消除打包大小超过警告
+      // Eliminate pack size over warning
       chunkSizeWarningLimit: 5000,
       //remote console.log in prod
       terserOptions: {

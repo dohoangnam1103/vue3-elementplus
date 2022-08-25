@@ -7,8 +7,8 @@
     :before-close="closeFormModal"
   >
     <el-form ref="refForm" label-width="150px" :inline="false" :model="subForm" :rules="formRules" class="pr-5">
-      <el-form-item label="选中的字段配置" prop="name" :rules="formRules.isNotNull">
-        <el-input v-model="subForm.name" style="width: 120px" placeholder="选中的字段配置" />
+      <el-form-item label="Chosen field 配置" prop="name" :rules="formRules.isNotNull">
+        <el-input v-model="subForm.name" style="width: 120px" placeholder="Chosen field 配置" />
       </el-form-item>
       <el-form-item label="生成的配置" prop="generatorConfig" :rules="formRules.isNotNull">
         <el-input v-model="subForm.generatorConfig" style="width: 120px" placeholder="生成的配置" />
@@ -17,7 +17,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closeFormModal">取 消</el-button>
-        <el-button type="primary" @click="confirmBtnClick">确 定</el-button>
+        <el-button type="primary" @click="confirmBtnClick">Ok</el-button>
       </span>
     </template>
   </el-dialog>
@@ -27,8 +27,8 @@
 defineOptions({ name: 'GeneratorConfigSaveForm' })
 const emit = defineEmits(['selectPageReq', 'hideComp'])
 const { formRules, elMessage } = useElement()
-/*2.modal新增和修改*/
-//新增
+/*2.modalnew和修改*/
+//new
 let subForm = reactive({ id: '', name: '', generatorConfig: '' })
 const refForm = $ref(null)
 let confirmBtnClick = () => {
@@ -53,7 +53,7 @@ const insertReq = () => {
     method: 'post',
     bfLoading: true
   }).then(() => {
-    elMessage('保存成功')
+    elMessage('Successfully saved')
     emit('selectPageReq')
     emit('hideComp')
   })
@@ -75,20 +75,19 @@ const updateReq = () => {
     method: 'update',
     bfLoading: true
   }).then(() => {
-    elMessage('更新成功')
+    elMessage('update completed')
     emit('selectPageReq')
     emit('hideComp')
   })
 }
 
 /*3.弹框相关*/
-//显示弹框
 let dialogTitle = $ref(null)
 let dialogVisible = $ref(null)
 let chooseFileName = $ref(null)
 let showModal = (isEdit, detailData) => {
   if (isEdit) {
-    dialogTitle = `编辑【配置】`
+    dialogTitle = `Edit【配置】`
     dialogVisible = true
     reshowData(detailData)
   } else {
@@ -101,7 +100,7 @@ let closeFormModal = () => {
   emit('hideComp')
 }
 onMounted(() => {})
-//导出给refs使用
+//export给refs使用
 defineExpose({ showModal })
 </script>
 

@@ -6,22 +6,22 @@
     <SubChildren />
   </div>
 
-  <div class="mt-2">插槽</div>
-  <!-- 默认插槽 -->
+  <div class="mt-2">slot</div>
+  <!-- default slot -->
   <slot>
     <!-- slot内为后备内容 -->
     <h3>没传内容</h3>
   </slot>
-  <!-- 具名插槽 -->
+  <!-- with nameslot -->
   <header>
     <slot name="header">
-      <h3>没传header插槽</h3>
+      <h3>没传headerslot</h3>
     </slot>
   </header>
-  <!-- 作用域插槽 -->
+  <!-- 作用域slot -->
   <footer>
-    <slot name="footer" testProps="子组件作用域传的值">
-      <h3>没传footer插槽</h3>
+    <slot name="footer" testProps="value passed from child component scope">
+      <h3>没传footerslot</h3>
     </slot>
   </footer>
 
@@ -48,7 +48,7 @@ const props = defineProps({
 let state = reactive({
   name: 'Children'
 })
-//导出给refs使用
+//export给refs使用
 let childRef = ref('childRef')
 let childMethod = () => {
   return 'childMethod'
@@ -62,7 +62,7 @@ let getFatherMethod = () => {
 // 定义emit事件
 const emit = defineEmits(['emitParent', 'update:childrenTitle'])
 const emitFather = () => {
-  emit('emitParent', { val: '子组件传递的信息' })
+  emit('emitParent', { val: '子组件传递的information' })
 }
 onMounted(() => {
   console.log('得到父元素的prop', props.fatherName)

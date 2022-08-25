@@ -1,6 +1,6 @@
 <template>
   <div class="scroll-y">
-    <div>svg-icon 使用示例</div>
+    <div>svg-icon Example of use</div>
     <svg-icon icon-class="dashboard" class="dashboard" />
   </div>
 </template>

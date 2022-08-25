@@ -1,6 +1,6 @@
 /*
  * generator 工具方法
- * @author: 熊猫哥
+ * @author: Brother Panda
  * */
 
 /*
@@ -20,7 +20,7 @@ export const changeDashToCase = (str) => {
   return str
 }
 
-//首字母转大写和_转驼峰
+//Initials转大写和_转驼峰
 export const changeDashToCaseAndFirstWord = (str) => {
   if (!str) return str
   let changeStr = ``
@@ -36,7 +36,7 @@ export const changeDashToCaseAndFirstWord = (str) => {
   return changeStr
 }
 
-//首字母转大写
+//Initials转大写
 export const changeTheFirstWordToCase = (str) => {
   if (typeof str === 'string') {
     return str.slice(0, 1).toUpperCase() + str.slice(1)
@@ -50,10 +50,10 @@ export const removeTbOrT = (tableName) => {
 }
 
 /**
- * 类型映射
- * @param type 数据库类型
- * @return  java类型
- * @author 熊猫哥
+ * type映射
+ * @param type data库type
+ * @return  javatype
+ * @author Brother Panda
  * @date 2022/6/4 9:54
  */
 export const tbTypeMapping = (type) => {
@@ -76,14 +76,14 @@ export const tbTypeMapping = (type) => {
   } else if ('Date'.includes(type)) {
     return 'Date'
   } else {
-    return '未知类型' + type
+    return '未知type' + type
   }
 }
 
 /**
- * 前端组件类型
+ * 前端component type
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/4 10:44
  */
 export const componentTypeArr = [
@@ -99,10 +99,10 @@ export const componentTypeArr = [
   { label: 'datetime', title: 'datetime' },
   { label: 'date', title: 'date' },
   { label: 'uploadImage', title: 'uploadImage' },
-  { label: '', title: '空类型' }
+  { label: '', title: '空type' }
 ]
 
-//查询的组件类型
+//Search的component type
 export const searchTableComponentTypeArr = [
   { label: 'input', title: 'input' },
   { label: 'select', title: 'select' },
@@ -111,22 +111,22 @@ export const searchTableComponentTypeArr = [
   { label: 'datetimerange', title: 'datetimerange' },
   { label: 'datetime', title: 'datetime' },
   { label: 'date', title: 'date' },
-  { label: '', title: '空类型' }
+  { label: '', title: '空type' }
 ]
 
-//table的组件类型
+//table的component type
 export const listTableComponentTypeArr = [
   { label: 'input', title: 'input' },
   { label: 'select', title: 'select' },
   { label: 'image', title: 'image' },
-  { label: '', title: '空类型' }
+  { label: '', title: '空type' }
 ]
 
 /**
- * 组件类型映射
+ * component type映射
  * @param null
  * @return
- * @author 熊猫哥
+ * @author Brother Panda
  * @date 2022/6/4 10:23
  */
 const commitTail = ':'
@@ -158,7 +158,7 @@ export const listTableComponentTypeMapping = (type, commont, field) => {
   return 'input'
 }
 
-//资管家校验规则
+//资管家Check rules
 export const ruleMapping = [
   { key: 'isNotNull', label: '必填' },
   { key: 'positiveInteger', label: '整数' },
@@ -202,7 +202,7 @@ export const splitTheOptionArr = (string) => {
     return []
   }
   if (!isSelectType(string)) {
-    elMessage(string + '传入有误', 'warning')
+    elMessage(string + 'Incoming error', 'warning')
     return []
   }
   let tsArr = string.split(commitExampleSplit)

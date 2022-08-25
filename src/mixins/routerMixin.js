@@ -6,7 +6,7 @@ const mixin = {
     }
   },
   created() {
-    // 通用获取页面参数
+    // 通用Obtain页面参数
     if (this.$route?.query?.params) {
       this.queryParamsMixin = JSON.parse(this.$route.query.params)
     }

@@ -39,7 +39,7 @@ import { toggleHtmlClass } from '@/theme/utils'
 
 console.log(appStore.theme)
 toggleHtmlClass(appStore.theme)
-//导出属性到页面中使用
+//export属性到页面中使用
 let { themeOptions } = toRefs(state)
 </script>
 

@@ -1,5 +1,5 @@
 import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer'
-// import.meta.glob 进行全部导入
+// import.meta.glob 进行全部import
 const modulesFiles = import.meta.globEager('../mock/*.js')
 let modules = []
 for (const path in modulesFiles) {

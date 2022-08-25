@@ -2,17 +2,17 @@ import { getToken } from '@/utils/auth'
 const mixin = {
   data() {
     return {
-      /* 文件上传相关*/
+      /* 文件upload相关*/
       fileListMixin: [],
       chooseFileNameMixin: '',
-      /* 多环境配置及token信息*/
+      /* 多环境配置及tokeninformation*/
       commonValueMixin: '',
       modalShowTitleMixin: '',
       VITE_APP_IMAGE_URL_PRE: '', // 图片前缀地址
       VITE_APP_BASE_URL: '', // 请求的url地址
       VITE_APP_BASE_WS_URL: '', // 请求的url地址
       accessTokenMixin: '', // 请求头的token
-      userBaseInfoMixin: {}, // 用户信息
+      userBaseInfoMixin: {}, // 用户information
       /* 时间点相关*/
       todayTimeMixin: '',
       currentTimeMixin: '',
@@ -22,18 +22,18 @@ const mixin = {
     }
   },
   created() {
-    /* 获取url连接域名，用于多平台迁移*/
+    /* Obtainurl连接域name，用于多平台迁移*/
     // const localUrl = window.location.href.slice(0, window.location.href.indexOf('/', 9) + 1)
     // const socketUrl = localUrl.replace(/http|https/gi, 'ws')
-    // 读取.env 多坏境里的数据
+    // 读取.env 多坏境里的data
     this.VITE_APP_IMAGE_URL_PRE = import.meta.env.VITE_APP_BASE_URL
     this.VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL
     // this.VITE_APP_BASE_WS_URL =
     //   import.meta.env.VITE_APP_ENV === 'serve' ? import.meta.env.VITE_APP_BASE_WS_URL : socketUrl
-    // 获取token和个人基本信息
+    // Obtaintoken和个人基本information
     this.accessTokenMixin = getToken()
     this.userBaseInfoMixin = JSON.parse(localStorage.getItem('L_userBaseInfo'))
-    /* 获取时间点*/
+    /* Obtain时间点*/
     this.todayTimeMixin = this.$momentMini().startOf('day').format('YYYY-MM-DD HH:mm:ss')
     this.currentTimeMixin = this.$momentMini(new Date()).format('YYYY-MM-DD HH:mm:ss')
     this.todayTimeMixinLast = this.$momentMini().endOf('day').format('YYYY-MM-DD HH:mm:ss')
@@ -41,9 +41,9 @@ const mixin = {
     this.yesterdayTimeMixin = this.$momentMini().add(-1, 'days').format('YYYY-MM-DD HH:mm:ss')
   },
   methods: {
-    /* 数组操作相关api*/
+    /* 数组operate相关api*/
     /*
-     * 根据key名称过滤数组
+     * 根据keyname称过滤数组
      * arr:数组
      * key：数值对象总的key
      * */
@@ -55,7 +55,7 @@ const mixin = {
       }, [])
     },
     /*
-     * 清空空的参数项
+     * empty空的参数项
      * objParam：传入的参数
      * */
     clearParamsIsNullMixin(objParam) {
@@ -66,7 +66,7 @@ const mixin = {
       return objParam
     },
 
-    /*文件上传*/
+    /*文件upload*/
     handleChangeMixin(file, fileListMixin) {
       console.log('file, fileListMixin', file, fileListMixin)
       this.fileListMixin = fileListMixin

@@ -1,6 +1,6 @@
 <template>
   <div class="colePermission">
-    <div>测试前请确定设置了setting.js文件里permissionMode为code模式</div>
+    <div>Before testing, please make sure setting.js The permissionMode in the file is code mode</div>
     <div style="margin-bottom: 15px">Your codeArr: {{ codeArr }}</div>
     Switch roles:
     <div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-//获取store和router
+//Obtainstore和router
 const codeArr = computed(() => {
   return localStorage.getItem('codeArr')
 })

@@ -1,7 +1,7 @@
 /**
  * v-debounce
  * 按钮防抖指令，可自行扩展至input
- * 接收参数：function类型
+ * 接收参数：functiontype
  */
 export default {
     mounted(el, binding) {

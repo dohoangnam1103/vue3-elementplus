@@ -4,17 +4,17 @@ export const useCommonExample = () => {
   const state = reactive({
     totalPage: 0,
     searchForm: {},
-    /* 文件上传相关*/
+    /* 文件upload相关*/
     fileList: [],
     chooseFileName: '',
-    /* 多环境配置及token信息*/
+    /* 多环境配置及tokeninformation*/
     commonValue: '',
     modalShowTitle: '',
     VITE_APP_IMAGE_URL_PRE: '', // 图片前缀地址
     VITE_APP_BASE_URL: '', // 请求的url地址
     VITE_APP_BASE_WS_URL: '', // 请求的url地址
     accessToken: '', // 请求头的token
-    userBaseInfo: {}, // 用户信息
+    userBaseInfo: {}, // 用户information
     /* 时间点相关*/
     todayTime: '',
     currentTime: '',
@@ -26,12 +26,12 @@ export const useCommonExample = () => {
     dialogTitle: '',
     dialogVisible: false
   })
-  // 读取.env 多坏境里的数据
+  // 读取.env 多坏境里的data
   state.VITE_APP_IMAGE_URL_PRE = import.meta.env.VITE_APP_BASE_URL
   state.VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL
-  // 获取token和个人基本信息
+  // Obtaintoken和个人基本information
   state.accessToken = getToken()
-  /* 获取时间点*/
+  /* Obtain时间点*/
   state.todayTime = momentMini().startOf('day').format('YYYY-MM-DD HH:mm:ss')
   state.currentTime = momentMini(new Date()).format('YYYY-MM-DD HH:mm:ss')
   state.todayTimeLast = momentMini().endOf('day').format('YYYY-MM-DD HH:mm:ss')
@@ -39,7 +39,7 @@ export const useCommonExample = () => {
   state.yesterdayTime = momentMini().add(-1, 'days').format('YYYY-MM-DD HH:mm:ss')
 
   /*
-   * 清空空的参数项
+   * empty空的参数项
    * objParam：传入的参数
    * */
   const clearParamsIsNull = (objParam) => {
@@ -50,7 +50,7 @@ export const useCommonExample = () => {
     return objParam
   }
 
-  /*文件上传*/
+  /*文件upload*/
   const handleChange = (fileList) => {
     state.fileList = fileList
   }

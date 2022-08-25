@@ -4,7 +4,7 @@
 
 <script setup>
 import echarts from 'echarts'
-//获取store和router
+//Obtainstore和router
 let { proxy } = getCurrentInstance()
 const props = defineProps({
   className: {
@@ -133,7 +133,7 @@ const setOptions = ({ expectedData, actualData } = {}) => {
     ]
   })
 }
-//导出属性到页面中使用
+//export属性到页面中使用
 // let {levelList} = toRefs(state);
 </script>
 

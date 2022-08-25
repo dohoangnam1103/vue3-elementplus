@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
     <div class="layout-container-table">
-      点击状态：{{ sideStr }}
+      click state：{{ sideStr }}
       <div v-clickoutside="setData" class="box">
         <span>InSide</span>
       </div>

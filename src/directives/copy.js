@@ -1,7 +1,7 @@
 /**
  * v-copy
  * 复制某个值至剪贴板
- * 接收参数：string类型/Ref<string>类型/Reactive<string>类型
+ * 接收参数：stringtype/Ref<string>type/Reactive<string>type
  */
 import { ElMessage } from 'element-plus';
 function handleClick(ev) {

@@ -5,7 +5,7 @@
 <script setup>
 import { onMounted, getCurrentInstance, reactive, onBeforeUnmount } from 'vue'
 import echarts from 'echarts'
-//获取store和router
+//Obtainstore和router
 defineProps({
   className: {
     type: String,

@@ -4,7 +4,7 @@
 
 <script setup>
 // import { onMounted, getCurrentInstance, watch, ref, toRefs, reactive, computed } from 'vue'
-//获取store和router
+//Obtainstore和router
 // import {useRouter} from 'vue-router'
 // const props = defineProps({
 //   name: {
@@ -33,9 +33,9 @@
 // let helloFunc = () => {
 //   console.log("helloFunc");
 // };
-//导出给refs使用
+//export给refs使用
 // defineExpose({ helloFunc });
-//导出属性到页面中使用
+//export属性到页面中使用
 // let {levelList} = toRefs(state);
 </script>
 

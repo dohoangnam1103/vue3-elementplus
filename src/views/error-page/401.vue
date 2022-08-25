@@ -1,6 +1,6 @@
 <template>
   <div class="errPage-container">
-    <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back">返回</el-button>
+    <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back">Back</el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">Oops!</h1>
@@ -48,7 +48,7 @@ const back = () => {
     router.go(-1)
   }
 }
-//导出属性到页面中使用
+//export属性到页面中使用
 const { ewizardClap, dialogVisible } = toRefs(state)
 </script>
 
